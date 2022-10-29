@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Product from "./components/product";
+import Cart from "./components/cart";
 import "./App.css";
 
 function App() {
@@ -10,19 +11,23 @@ function App() {
     { id: 4, item: "hat" },
     { id: 5, item: "socks" },
     { id: 6, item: "shoes" },
+    { id: 7, item: "tie" },
+    { id: 8, item: "suspenders" },
+    { id: 9, item: "bowtie" },
+    { id: 10, item: "pipe" },
   ];
 
-  // const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
+  const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
 
   return (
     <div className="App">
       <div className="container bg-slate-700  ">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {/* <Product products={products} /> */}
+        {products.map((element) => (
+          <Product key={element.id} item={element.item} />
+        ))}
       </div>
+      <Cart />
     </div>
   );
 }

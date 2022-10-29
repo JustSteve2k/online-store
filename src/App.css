@@ -1,12 +1,16 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .container {
-  width: 40rem;
-  height: 50rem;
+  width: 35rem;
   margin: 0 auto;
   border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .App-logo {
