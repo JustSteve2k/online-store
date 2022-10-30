@@ -18,16 +18,27 @@ function App() {
   ];
 
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
+  const [cart, setCart] = useState([]);
+
+  const cartHandler = (item, id) => {
+    console.log(item);
+    console.log(id);
+
+    let entry = { item: item, id: id, count: 1 };
+
+    setCart((prev) => {
+      return [...prev, entry];
+    });
+  };
 
   return (
     <div className="App">
       <div className="container bg-slate-700  ">
-        {/* <Product products={products} /> */}
         {products.map((element) => (
-          <Product key={element.id} item={element.item} />
+          <Product key={element.id} id={element.id} item={element.item} cartHandler={cartHandler} />
         ))}
       </div>
-      <Cart />
+      <Cart item={cart} />
     </div>
   );
 }
