@@ -16,7 +16,9 @@ export default function Product(props) {
       <div>Product Image</div>
       <div>{props.item}</div>
       <div>${props.cost}</div>
-      <button onClick={clickHandler}>Add to Cart</button>
+      <button className="productButton" onClick={clickHandler}>
+        Add to Cart
+      </button>
     </div>
   );
 }

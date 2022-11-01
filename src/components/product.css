@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-button {
+.productButton {
   border: 1px solid black;
   border-radius: 12px;
   background-color: cadetblue;
