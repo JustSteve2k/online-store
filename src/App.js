@@ -5,32 +5,34 @@ import "./App.css";
 
 function App() {
   const DUMMY_PRODUCT_LIST = [
-    { id: 1, item: "shirt" },
-    { id: 2, item: "pants" },
-    { id: 3, item: "shorts" },
-    { id: 4, item: "hat" },
-    { id: 5, item: "socks" },
-    { id: 6, item: "shoes" },
-    { id: 7, item: "tie" },
-    { id: 8, item: "suspenders" },
-    { id: 9, item: "bowtie" },
-    { id: 10, item: "pipe" },
+    { id: 1, item: "shirt", cost: 19.99 },
+    { id: 2, item: "pants", cost: 26.99 },
+    { id: 3, item: "shorts", cost: 14.69 },
+    { id: 4, item: "hat", cost: 12.99 },
+    { id: 5, item: "socks", cost: 6.99 },
+    { id: 6, item: "shoes", cost: 49.99 },
+    { id: 7, item: "tie", cost: 9.99 },
+    { id: 8, item: "suspenders", cost: 12.99 },
+    { id: 9, item: "bowtie", cost: 4.99 },
+    { id: 10, item: "pipe", cost: 11.99 },
   ];
 
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const cartHandler = (item, id, amount) => {
+  const cartHandler = (item, id, amount, cost) => {
     console.log(item);
     console.log(id);
     console.log(amount);
+    console.log(cost);
 
     let spot = cart.findIndex((element) => element.id === id);
 
     if (spot === -1) {
       console.log(`Not found, so adding to the list`);
       let key = Math.floor(Math.random() * 10000000);
-      let entry = { item: item, id: id, amount: amount, key: key };
+      let entry = { item: item, id: id, amount: amount, key: key, cost: cost };
       setCart((prev) => {
         return [...prev, entry];
       });
@@ -40,16 +42,25 @@ function App() {
       newcart[spot].amount += amount;
       setCart(newcart);
     }
+    setTotal((prev) => {
+      return (prev += amount * cost);
+    });
+  };
+
+  const clearCart = () => {
+    setCart((prev) => {
+      return [];
+    });
   };
 
   return (
     <div className="App">
       <div className="container bg-slate-700  ">
         {products.map((element) => (
-          <Product key={element.id} id={element.id} item={element.item} cartHandler={cartHandler} />
+          <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
         ))}
       </div>
-      <Cart item={cart} />
+      <Cart item={cart} products={products} clearCart={clearCart} total={total} />
     </div>
   );
 }

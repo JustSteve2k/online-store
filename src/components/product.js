@@ -7,12 +7,15 @@ export default function Product(props) {
     let item = props.item;
     let id = props.id;
     let amount = 1;
-    props.cartHandler(item, id, amount);
+    let cost = props.cost;
+    props.cartHandler(item, id, amount, cost);
   };
 
   return (
     <div className="product">
-      {props.item}
+      <div>Product Image</div>
+      <div>{props.item}</div>
+      <div>${props.cost}</div>
       <button onClick={clickHandler}>Add to Cart</button>
     </div>
   );
