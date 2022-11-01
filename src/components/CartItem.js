@@ -7,7 +7,7 @@ export default function CartItem(props) {
 
   return (
     <li>
-      {props.amount}ea - {props.item}
+      {props.amount}ea - {props.item} - ${(props.amount * props.cost).toFixed(2)}
     </li>
   );
 }

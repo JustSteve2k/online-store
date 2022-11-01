@@ -8,8 +8,6 @@ export default function Cart(props) {
     console.log(props.item);
   };
 
-  // const test = <p>TEST HELLO COMPONENT</p>;
-
   if (props.item.length === 0) {
     return (
       <div className="cartContainer">
@@ -25,9 +23,13 @@ export default function Cart(props) {
       {/* <button onClick={clickHandler}>See whats in the cart</button> */}
       <ul>
         {props.item.map((element) => (
-          <CartItem key={element.id} item={element.item} amount={element.amount} />
+          <CartItem key={element.id} item={element.item} amount={element.amount} cost={element.cost} />
         ))}
       </ul>
+      <div>Total</div>
+      <div>-------</div>
+      <div>${props.total.toFixed(2)}</div>
+      <button onClick={props.clearCart}>Clear Cart</button>
     </div>
   );
 }
