@@ -6,8 +6,8 @@ export default function Product(props) {
   const clickHandler = () => {
     let item = props.item;
     let id = props.id;
-
-    props.cartHandler(item, id);
+    let amount = 1;
+    props.cartHandler(item, id, amount);
   };
 
   return (
