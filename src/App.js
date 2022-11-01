@@ -20,15 +20,26 @@ function App() {
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
   const [cart, setCart] = useState([]);
 
-  const cartHandler = (item, id) => {
+  const cartHandler = (item, id, amount) => {
     console.log(item);
     console.log(id);
+    console.log(amount);
 
-    let entry = { item: item, id: id, count: 1 };
+    let spot = cart.findIndex((element) => element.id === id);
 
-    setCart((prev) => {
-      return [...prev, entry];
-    });
+    if (spot === -1) {
+      console.log(`Not found, so adding to the list`);
+      let key = Math.floor(Math.random() * 10000000);
+      let entry = { item: item, id: id, amount: amount, key: key };
+      setCart((prev) => {
+        return [...prev, entry];
+      });
+    } else {
+      console.log(`Found at spot ${spot} in the cart`);
+      let newcart = [...cart];
+      newcart[spot].amount += amount;
+      setCart(newcart);
+    }
   };
 
   return (

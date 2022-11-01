@@ -5,5 +5,9 @@ export default function CartItem(props) {
     return <li>Nothing in here yet</li>;
   }
 
-  return <li>{props.item}</li>;
+  return (
+    <li>
+      {props.amount}ea - {props.item}
+    </li>
+  );
 }

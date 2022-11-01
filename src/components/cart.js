@@ -8,24 +8,24 @@ export default function Cart(props) {
     console.log(props.item);
   };
 
-  const list = (
-    <ul>
-      {props.item.map((element) => (
-        <li>element.item</li>
-      ))}
-    </ul>
-  );
+  // const test = <p>TEST HELLO COMPONENT</p>;
 
-  const test = <p>TEST HELLO COMPONENT</p>;
+  if (props.item.length === 0) {
+    return (
+      <div className="cartContainer">
+        <h1>Cart</h1>
+        <h2>Nothing in here yet.</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="cartContainer">
       <h1>Cart</h1>
-      <div>Stuff in your cart</div>
-      <button onClick={clickHandler}>See whats in the cart</button>
+      {/* <button onClick={clickHandler}>See whats in the cart</button> */}
       <ul>
         {props.item.map((element) => (
-          <CartItem key={element.id} item={element.item} />
+          <CartItem key={element.id} item={element.item} amount={element.amount} />
         ))}
       </ul>
     </div>
