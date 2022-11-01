@@ -47,6 +47,27 @@ function App() {
     });
   };
 
+  const removeItemHandler = (id) => {
+    let spot = cart.findIndex((element) => element.id === id);
+
+    let newCart = [...cart];
+    newCart[spot].amount -= 1;
+
+    if (newCart[spot].amount <= 0) {
+      newCart.splice(spot, 1);
+    }
+
+    setCart(newCart);
+
+    setTotal(() => {
+      let total = 0;
+      newCart.forEach((element) => {
+        total += element.cost * element.amount;
+      });
+      return total;
+    });
+  };
+
   const clearCart = () => {
     setCart((prev) => {
       return [];
@@ -60,7 +81,7 @@ function App() {
           <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
         ))}
       </div>
-      <Cart item={cart} products={products} clearCart={clearCart} total={total} />
+      <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
     </div>
   );
 }
