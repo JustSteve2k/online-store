@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./product.css";
 
 export default function Product(props) {
+  const [amount, setAmount] = useState(1);
+
   const clickHandler = () => {
     let item = props.item;
     let id = props.id;
-    let amount = 1;
     let cost = props.cost;
     props.cartHandler(item, id, amount, cost);
+  };
+
+  const amountHandler = (event) => {
+    setAmount(() => {
+      return parseInt(event.target.value);
+    });
   };
 
   return (
@@ -19,6 +26,7 @@ export default function Product(props) {
       <button className="productButton" onClick={clickHandler}>
         Add to Cart
       </button>
+      <input type="number" className="w-16 m-auto text-center" value={amount} onChange={amountHandler}></input>
     </div>
   );
 }
