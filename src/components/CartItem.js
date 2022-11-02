@@ -12,10 +12,12 @@ export default function CartItem(props) {
 
   return (
     <li>
-      <div onClick={clickHandler}>
-        {props.amount}ea - {props.item} - ${(props.amount * props.cost).toFixed(2)}
+      <div onClick={clickHandler} className="hover:border-2 hover:bg-slate-500 border-solid border-black w-48 m-auto border-1">
+        {props.amount} ea - {props.item} - ${(props.amount * props.cost).toFixed(2)}
+        <button onClick={clickHandler} className="w-4 bg-slate-500 m-auto">
+          -
+        </button>
       </div>
-      {/* <button onClick={clickHandler}>-</button> */}
     </li>
   );
 }

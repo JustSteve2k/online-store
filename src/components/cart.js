@@ -18,7 +18,7 @@ export default function Cart(props) {
   }
 
   return (
-    <div className="cartContainer">
+    <div className="cartContainer flex flex-col">
       <h1>Cart</h1>
       {/* <button onClick={clickHandler}>See whats in the cart</button> */}
       <ul>
@@ -36,8 +36,12 @@ export default function Cart(props) {
       <div>Total</div>
       <div>-------</div>
       <div>${props.total.toFixed(2)}</div>
-      <button onClick={props.clearCart}>Clear Cart</button>
-      <button onClick={clickHandler}>Show Array</button>
+      <button className="w-32 bg-teal-700 m-auto" onClick={props.clearCart}>
+        Clear Cart
+      </button>
+      <button className="w-32 bg-teal-700 m-auto" onClick={clickHandler}>
+        Show Array
+      </button>
     </div>
   );
 }
