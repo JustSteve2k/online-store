@@ -22,10 +22,10 @@ function App() {
   const [total, setTotal] = useState(0);
 
   const cartHandler = (item, id, amount, cost) => {
-    console.log(item);
-    console.log(id);
-    console.log(amount);
-    console.log(cost);
+    // console.log(item);
+    // console.log(id);
+    // console.log(amount);
+    // console.log(cost);
 
     let spot = cart.findIndex((element) => element.id === id);
 
@@ -72,6 +72,7 @@ function App() {
     setCart((prev) => {
       return [];
     });
+    setTotal(0);
   };
 
   return (
