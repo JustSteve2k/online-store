@@ -1,20 +1,21 @@
 import { useState } from "react";
+import Filter from "./components/Filter";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import "./App.css";
 
 function App() {
   const DUMMY_PRODUCT_LIST = [
-    { id: 1, item: "shirt", cost: 19.99 },
-    { id: 2, item: "pants", cost: 26.99 },
-    { id: 3, item: "shorts", cost: 14.69 },
-    { id: 4, item: "hat", cost: 12.99 },
-    { id: 5, item: "socks", cost: 6.99 },
-    { id: 6, item: "shoes", cost: 49.99 },
-    { id: 7, item: "tie", cost: 9.99 },
-    { id: 8, item: "suspenders", cost: 12.99 },
-    { id: 9, item: "bowtie", cost: 4.99 },
-    { id: 10, item: "pipe", cost: 11.99 },
+    { id: 1, item: "shirt", cost: 19.99, categories: "top" },
+    { id: 2, item: "pants", cost: 26.99, categories: "bottom" },
+    { id: 3, item: "shorts", cost: 14.69, categories: "bottom" },
+    { id: 4, item: "hat", cost: 12.99, categories: "accessory" },
+    { id: 5, item: "socks", cost: 6.99, categories: "accesory" },
+    { id: 6, item: "shoes", cost: 49.99, categories: "shoes" },
+    { id: 7, item: "tie", cost: 9.99, categories: "accessory" },
+    { id: 8, item: "suspenders", cost: 12.99, categories: "accessory" },
+    { id: 9, item: "bowtie", cost: 4.99, categories: "accessory" },
+    { id: 10, item: "pipe", cost: 11.99, categories: "accesory" },
   ];
 
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
@@ -77,6 +78,7 @@ function App() {
 
   return (
     <div className="App">
+      <Filter />
       <div className="container bg-slate-700  ">
         {products.map((element) => (
           <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
