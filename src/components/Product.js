@@ -20,7 +20,7 @@ export default function Product(props) {
 
   return (
     <div className="product">
-      <div>Product Image</div>
+      <div className="productImage">Product Image</div>
       <div>{props.item}</div>
       <div>${props.cost}</div>
       <button className="productButton" onClick={clickHandler}>
