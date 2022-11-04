@@ -21,6 +21,25 @@ function App() {
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [filter, setFilter] = useState([]);
+
+  const filterHandler = (button) => {
+    let spot = filter.findIndex((element) => element === button);
+
+    if (spot === -1)
+      setFilter((prev) => {
+        return [...prev, button];
+        // if prev doesn't contain button, add it.
+      });
+    else {
+      setFilter((prev) => {
+        let newList = [...prev];
+        newList.splice(spot, 1);
+        return newList;
+        // if prev contains button remove it.
+      });
+    }
+  };
 
   const cartHandler = (item, id, amount, cost) => {
     // console.log(item);
@@ -78,7 +97,7 @@ function App() {
 
   return (
     <div className="App">
-      <Filter />
+      <Filter filterHandler={filterHandler} filter={filter} />
       <div className="container bg-slate-700  ">
         {products.map((element) => (
           <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />

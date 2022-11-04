@@ -9,9 +9,16 @@
 }
 
 .filterContainer button {
-  background-color: rgb(85, 85, 122);
   width: 8rem;
   height: 2rem;
   margin: 0.5rem auto;
   border-radius: 8px;
+}
+
+.inactive {
+  background-color: rgb(85, 85, 122);
+}
+
+.active {
+  background-color: rgb(230, 10, 10);
 }
