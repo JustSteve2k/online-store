@@ -1,5 +1,27 @@
 .cartContainer {
   width: 20rem;
-  height: 40rem;
+  height: 30rem;
   border: 1px solid black;
+  position: relative;
+  margin: 1rem 1rem 0 0;
+}
+
+.btnClearCart {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.btnShowArray {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btnClearCart:hover {
+  background-color: aqua;
+}
+
+.btnShowArray:hover {
+  background-color: aqua;
 }

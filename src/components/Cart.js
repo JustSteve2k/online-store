@@ -36,10 +36,10 @@ export default function Cart(props) {
       <div>Total</div>
       <div>-------</div>
       <div>${props.total.toFixed(2)}</div>
-      <button className="w-32 bg-teal-700 m-auto" onClick={props.clearCart}>
+      <button className="w-32 bg-teal-700 m-auto btnClearCart" onClick={props.clearCart}>
         Clear Cart
       </button>
-      <button className="w-32 bg-teal-700 m-auto" onClick={clickHandler}>
+      <button className="w-32 bg-teal-700 m-auto btnShowArray" onClick={clickHandler}>
         Show Array
       </button>
     </div>
