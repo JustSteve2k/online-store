@@ -17,6 +17,10 @@ export default function Cart(props) {
     );
   }
 
+  const TAX_RATE = 0.08;
+  let tax = props.total * TAX_RATE;
+  let total = props.total + tax;
+
   return (
     <div className="cartContainer flex flex-col">
       <h1>Cart</h1>
@@ -33,9 +37,10 @@ export default function Cart(props) {
           />
         ))}
       </ul>
+      <div>--------------------</div>
+      <div>Tax - ${tax.toFixed(2)}</div>
       <div>Total</div>
-      <div>-------</div>
-      <div>${props.total.toFixed(2)}</div>
+      <div>${total.toFixed(2)}</div>
       <button className="w-32 bg-teal-700 m-auto btnClearCart" onClick={props.clearCart}>
         Clear Cart
       </button>
