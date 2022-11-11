@@ -1,0 +1,16 @@
+.headerMain {
+  background-color: lightblue;
+  height: 4rem;
+  position: relative;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid black;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 20rem;
+}

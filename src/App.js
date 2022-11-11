@@ -2,6 +2,7 @@ import { useState } from "react";
 import Filter from "./components/Filter";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
       });
     }
   };
+
+  // let reducedList = products.filter((element) => filter.includes(element.categories));
 
   const cartHandler = (item, id, amount, cost) => {
     // console.log(item);
@@ -96,15 +99,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Filter filterHandler={filterHandler} filter={filter} />
-      <div className="container bg-slate-700  ">
-        {products.map((element) => (
+    <>
+      <Header />
+      <div className="App">
+        <Filter filterHandler={filterHandler} filter={filter} />
+        <div className="container bg-slate-700  ">
+          {products.map((element) => (
+            <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
+          ))}
+          {/* {reducedList.map((element) => (
           <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
-        ))}
+        ))} */}
+        </div>
+        <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>
-      <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
-    </div>
+    </>
   );
 }
 
