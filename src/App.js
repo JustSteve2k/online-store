@@ -3,6 +3,9 @@ import Filter from "./components/Filter";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
+
+import LoggedInProvider from "./context/LoggedInContext";
+
 import "./App.css";
 
 function App() {
@@ -99,7 +102,7 @@ function App() {
   };
 
   return (
-    <>
+    <LoggedInProvider>
       <Header />
       <div className="App">
         <Filter filterHandler={filterHandler} filter={filter} />
@@ -113,7 +116,7 @@ function App() {
         </div>
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>
-    </>
+    </LoggedInProvider>
   );
 }
 
