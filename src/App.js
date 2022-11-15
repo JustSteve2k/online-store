@@ -25,7 +25,7 @@ function App() {
   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
 
   const filterHandler = (button) => {
     let spot = filter.findIndex((element) => element === button);
@@ -45,13 +45,15 @@ function App() {
     }
   };
 
-  // let reducedList = products.filter((element) => filter.includes(element.categories));
+  let reducedList = products.filter((element) => filter.includes(element.categories));
 
   const cartHandler = (item, id, amount, cost) => {
     // console.log(item);
     // console.log(id);
     // console.log(amount);
     // console.log(cost);
+    console.log(`reduced list`);
+    console.log(reducedList);
 
     let spot = cart.findIndex((element) => element.id === id);
 
@@ -107,12 +109,9 @@ function App() {
       <div className="App">
         <Filter filterHandler={filterHandler} filter={filter} />
         <div className="container bg-slate-700  ">
-          {products.map((element) => (
+          {reducedList.map((element) => (
             <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
           ))}
-          {/* {reducedList.map((element) => (
-          <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
-        ))} */}
         </div>
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>

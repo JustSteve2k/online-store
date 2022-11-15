@@ -12,24 +12,24 @@ export default function Filter(props) {
     return props.filter.includes(button);
   };
 
-  const tops = findIfActive("Tops");
-  const bottoms = findIfActive("Bottoms");
-  const shoes = findIfActive("Shoes");
-  const accessories = findIfActive("Accessories");
+  const tops = findIfActive("top");
+  const bottoms = findIfActive("bottom");
+  const shoes = findIfActive("shoes");
+  const accessories = findIfActive("accessory");
 
   return (
     <div className="filterContainer">
       <h3>Product Filters</h3>
-      <button className={tops ? "active" : "inactive"} onClick={() => props.filterHandler("Tops")}>
+      <button className={tops ? "active" : "inactive"} onClick={() => props.filterHandler("top")}>
         Tops
       </button>
-      <button className={bottoms ? "active" : "inactive"} onClick={() => props.filterHandler("Bottoms")}>
+      <button className={bottoms ? "active" : "inactive"} onClick={() => props.filterHandler("bottom")}>
         Bottoms
       </button>
-      <button className={shoes ? "active" : "inactive"} onClick={() => props.filterHandler("Shoes")}>
+      <button className={shoes ? "active" : "inactive"} onClick={() => props.filterHandler("shoes")}>
         Shoes
       </button>
-      <button className={accessories ? "active" : "inactive"} onClick={() => props.filterHandler("Accessories")}>
+      <button className={accessories ? "active" : "inactive"} onClick={() => props.filterHandler("accessory")}>
         Accessories
       </button>
       <button onClick={filterListHandler}>Show the current list</button>
