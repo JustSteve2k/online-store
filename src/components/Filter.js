@@ -12,6 +12,7 @@ export default function Filter(props) {
     return props.filter.includes(button);
   };
 
+  const all = findIfActive(["top", "bottom", "shoes", "accessory"]);
   const tops = findIfActive("top");
   const bottoms = findIfActive("bottom");
   const shoes = findIfActive("shoes");
@@ -20,6 +21,9 @@ export default function Filter(props) {
   return (
     <div className="filterContainer">
       <h3>Product Filters</h3>
+      <button className={all ? "active" : "inactive"} onClick={() => props.resetFilterHandler()}>
+        All
+      </button>
       <button className={tops ? "active" : "inactive"} onClick={() => props.filterHandler("top")}>
         Tops
       </button>

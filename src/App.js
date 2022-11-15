@@ -45,6 +45,10 @@ function App() {
     }
   };
 
+  const resetFilterHandler = () => {
+    setFilter(["top", "bottom", "shoes", "accessory"]);
+  };
+
   let reducedList = products.filter((element) => filter.includes(element.categories));
 
   const cartHandler = (item, id, amount, cost) => {
@@ -107,7 +111,7 @@ function App() {
     <LoggedInProvider>
       <Header />
       <div className="App">
-        <Filter filterHandler={filterHandler} filter={filter} />
+        <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
         <div className="container bg-slate-700  ">
           {reducedList.map((element) => (
             <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
