@@ -7,6 +7,7 @@
 
 .container {
   width: 55rem;
+  min-height: 94vh;
   margin: 0 auto;
   border: 1px solid black;
   display: flex;
