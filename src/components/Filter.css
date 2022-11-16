@@ -1,7 +1,7 @@
 .filterContainer {
   border: 1px solid black;
   width: 10rem;
-  height: 30rem;
+  height: 22rem;
   margin-top: 4rem;
   margin-left: 2rem;
   display: flex;
@@ -10,15 +10,19 @@
 
 .filterContainer button {
   width: 8rem;
-  height: 2rem;
   margin: 0.5rem auto;
   border-radius: 8px;
 }
 
 .inactive {
-  background-color: rgb(85, 85, 122);
+  background-color: rgb(15, 118, 110);
 }
 
 .active {
-  background-color: rgb(230, 10, 10);
+  background-color: aqua;
+}
+
+.currentListBtn {
+  margin-top: 2rem !important;
+  height: 4rem;
 }

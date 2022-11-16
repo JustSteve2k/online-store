@@ -4,9 +4,3 @@
   width: 2rem;
   border: 1px solid black;
 }
-
-.btnRemoveItem:hover {
-  background-color: aqua;
-  transition: 0.25s;
-  box-shadow: 0px 0px 10px black;
-}

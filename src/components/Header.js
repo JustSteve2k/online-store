@@ -11,6 +11,7 @@ export default function Header() {
       Logo!
       {test}
       <div className="links">
+        <button>Admin</button>
         <button>Account</button>
         <button>Cart</button>
       </div>
