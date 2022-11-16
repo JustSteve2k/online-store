@@ -12,7 +12,12 @@ export default function Filter(props) {
     return props.filter.includes(button);
   };
 
-  const all = findIfActive(["top", "bottom", "shoes", "accessory"]);
+  const findIfAll = (array) => {
+    if (array.length == 4) return true;
+    else return false;
+  };
+
+  const all = findIfAll(props.filter);
   const tops = findIfActive("top");
   const bottoms = findIfActive("bottom");
   const shoes = findIfActive("shoes");
@@ -36,7 +41,9 @@ export default function Filter(props) {
       <button className={accessories ? "active" : "inactive"} onClick={() => props.filterHandler("accessory")}>
         Accessories
       </button>
-      <button onClick={filterListHandler}>Show the current list</button>
+      <button className="currentListBtn" onClick={filterListHandler}>
+        Show the current list
+      </button>
     </div>
   );
 }
