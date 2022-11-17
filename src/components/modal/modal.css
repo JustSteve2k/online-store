@@ -1,0 +1,19 @@
+.modalContainer {
+  display: relative;
+  width: 20rem;
+  height: 10rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 12px;
+  box-shadow: 0px 0px 12px black;
+  position: absolute;
+  top: 2rem;
+  left: 10rem;
+}
+
+.modalClose {
+  position: absolute;
+  width: 2rem;
+  top: 1rem;
+  right: 1rem;
+}

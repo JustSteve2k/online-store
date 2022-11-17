@@ -3,7 +3,7 @@ import "./Header.css";
 
 import { LoggedInContext } from "../context/LoggedInContext";
 
-export default function Header() {
+export default function Header(props) {
   const test = useContext(LoggedInContext);
 
   return (
@@ -13,7 +13,7 @@ export default function Header() {
       <div className="links">
         <button>Admin</button>
         <button>Account</button>
-        <button>Cart</button>
+        <button onClick={props.showCartHandler}>Cart</button>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Filter from "./components/Filter";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
+import Modal from "./components/modal/modal";
 
 import LoggedInProvider from "./context/LoggedInContext";
 
@@ -26,6 +27,15 @@ function App() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
+  const [showCart, setShowCart] = useState(false);
+
+  const hideCartHandler = () => {
+    setShowCart(false);
+  };
+
+  const showCartHandler = () => {
+    setShowCart(true);
+  };
 
   const filterHandler = (button) => {
     let spot = filter.findIndex((element) => element === button);
@@ -109,7 +119,7 @@ function App() {
 
   return (
     <LoggedInProvider>
-      <Header />
+      <Header showCartHandler={showCartHandler} hideCartHandler={hideCartHandler} />
       <div className="App">
         <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
         <div className="container bg-slate-700  ">
@@ -119,6 +129,7 @@ function App() {
         </div>
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>
+      {showCart && <Modal hideCartHandler={hideCartHandler} />}
     </LoggedInProvider>
   );
 }
