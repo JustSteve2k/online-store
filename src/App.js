@@ -28,13 +28,14 @@ function App() {
   const [total, setTotal] = useState(0);
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
   const [showCart, setShowCart] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
-  const hideCartHandler = () => {
-    setShowCart(false);
+  const displayCartHandler = () => {
+    setShowCart((prev) => !prev);
   };
 
-  const showCartHandler = () => {
-    setShowCart(true);
+  const showLoginHandler = () => {
+    setShowLogin((prev) => !prev);
   };
 
   const filterHandler = (button) => {
@@ -119,7 +120,7 @@ function App() {
 
   return (
     <LoggedInProvider>
-      <Header showCartHandler={showCartHandler} hideCartHandler={hideCartHandler} />
+      <Header displayCartHandler={displayCartHandler} showLoginHandler={showLoginHandler} />
       <div className="App">
         <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
         <div className="container bg-slate-700  ">
@@ -129,7 +130,7 @@ function App() {
         </div>
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>
-      {showCart && <Modal hideCartHandler={hideCartHandler} />}
+      {showCart && <Modal displayCartHandler={displayCartHandler} />}
     </LoggedInProvider>
   );
 }
