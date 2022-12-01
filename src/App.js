@@ -4,6 +4,7 @@ import Product from "./components/Product";
 import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Modal from "./components/modal/modal";
+import Login from "./components/Login/Login";
 
 import LoggedInProvider from "./context/LoggedInContext";
 
@@ -131,6 +132,7 @@ function App() {
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
       </div>
       {showCart && <Modal displayCartHandler={displayCartHandler} />}
+      {showLogin && <Login showLoginHandler={showLoginHandler} />}
     </LoggedInProvider>
   );
 }
