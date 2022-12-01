@@ -39,8 +39,7 @@ export default function Cart(props) {
       </ul>
       <div>--------------------</div>
       <div>Tax - ${tax.toFixed(2)}</div>
-      <div>Total</div>
-      <div>${total.toFixed(2)}</div>
+      <div>Total - ${total.toFixed(2)}</div>
       <button className="w-32 bg-teal-700 m-auto btnClearCart" onClick={props.clearCart}>
         Clear Cart
       </button>
