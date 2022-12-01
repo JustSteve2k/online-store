@@ -14,7 +14,7 @@ export default function Header(props) {
       {alttest}
       <div className="links">
         {isAdmin && <button>Admin</button>}
-        {isLoggedIn ? <button>Account</button> : <button>Login</button>}
+        {isLoggedIn ? <button>Account</button> : <button onClick={props.showLoginHandler}>Login</button>}
         <button onClick={props.displayCartHandler}>Cart</button>
       </div>
     </div>
