@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import "./Product.css";
+
+import ProductContext from "../context/ProductContext";
 
 export default function Product(props) {
   const [amount, setAmount] = useState(1);
 
+  const productCTX = useContext(ProductContext);
+
   const clickHandler = () => {
-    let item = props.item;
-    let id = props.id;
-    let cost = props.cost;
+    let item = props.element.item;
+    let id = props.element.id;
+    let cost = props.element.cost;
     props.cartHandler(item, id, amount, cost);
+    productCTX.addProduct(props.element);
   };
 
   const amountHandler = (event) => {
@@ -21,8 +26,8 @@ export default function Product(props) {
   return (
     <div className="product">
       <div className="productImage">Product Image</div>
-      <div>{props.item}</div>
-      <div>${props.cost}</div>
+      <div>{props.element.item}</div>
+      <div>${props.element.cost}</div>
       <button className="productButton" onClick={clickHandler}>
         Add to Cart
       </button>
