@@ -12,6 +12,25 @@ export default function Modal(props) {
 
   console.log(`The new final amount is ${productCTX.totalWTax}`);
 
+  let cartStatus = <p>The cart is empty atm!</p>;
+
+  if (productCTX.items.length > 0) {
+    cartStatus = productCTX.items.map((item) => {
+      return <ModalCartItem key={item.id} item={item} />;
+    });
+  }
+
+  let totals = <div></div>;
+
+  if (productCTX.items.length > 0) {
+    totals = (
+      <div>
+        <h2>The total cost is {productCTX.totalAmount}</h2>
+        <h2>Total after tax is ${productCTX.totalWTax}</h2>
+      </div>
+    );
+  }
+
   return (
     <div className="modalContainer">
       {/* MODAL */}
@@ -19,13 +38,8 @@ export default function Modal(props) {
       <button className="modalClose" onClick={props.displayCartHandler}>
         X
       </button>
-      <div className="modalInside">
-        {productCTX.items.map((item) => {
-          return <ModalCartItem key={item.id} item={item} />;
-        })}
-      </div>
-      <h2>The total cost is {productCTX.totalAmount}</h2>
-      <h2>Total after tax is ${productCTX.totalWTax}</h2>
+      <div className={productCTX.items.length > 0 ? "modalInside" : ""}>{cartStatus}</div>
+      {totals}
     </div>
   );
 }

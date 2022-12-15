@@ -1,0 +1,16 @@
+.lineItem {
+  position: relative;
+  height: 2rem;
+}
+
+.cartEntry {
+  position: absolute;
+  margin: 0.25rem 0 0rem;
+  left: 1rem;
+}
+
+.deleteButton {
+  position: absolute;
+  margin: 0.25rem 0 0rem;
+  right: 1rem;
+}
