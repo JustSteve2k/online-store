@@ -5,8 +5,7 @@ import Cart from "./components/Cart";
 import Header from "./components/Header";
 import Modal from "./components/modal/modal";
 import Login from "./components/Login/Login";
-
-import LoggedInProvider from "./context/LoggedInContext";
+import ComboProvider from "./context/ComboProvider";
 
 import "./App.css";
 
@@ -120,7 +119,7 @@ function App() {
   };
 
   return (
-    <LoggedInProvider>
+    <ComboProvider>
       <Header displayCartHandler={displayCartHandler} showLoginHandler={showLoginHandler} />
       <div className="App">
         <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
@@ -133,7 +132,7 @@ function App() {
       </div>
       {showCart && <Modal displayCartHandler={displayCartHandler} />}
       {showLogin && <Login showLoginHandler={showLoginHandler} />}
-    </LoggedInProvider>
+    </ComboProvider>
   );
 }
 
