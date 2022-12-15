@@ -22,12 +22,10 @@ export default function Login(props) {
 
   const updateUser = (e) => {
     username = e.target.value;
-    // console.log(username);
   };
 
   const updatePass = (e) => {
     password = e.target.value;
-    // console.log(password);
   };
 
   return (
