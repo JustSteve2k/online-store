@@ -62,25 +62,26 @@ function App() {
 
   let reducedList = products.filter((element) => filter.includes(element.categories));
 
+  // For adding into the cart on the main page.
   const cartHandler = (item, id, amount, cost) => {
     // console.log(item);
     // console.log(id);
     // console.log(amount);
     // console.log(cost);
-    console.log(`reduced list`);
-    console.log(reducedList);
+    // console.log(`reduced list`);
+    // console.log(reducedList);
 
     let spot = cart.findIndex((element) => element.id === id);
 
     if (spot === -1) {
-      console.log(`Not found, so adding to the list`);
+      // console.log(`Not found, so adding to the list`);
       let key = Math.floor(Math.random() * 10000000);
       let entry = { item: item, id: id, amount: amount, key: key, cost: cost };
       setCart((prev) => {
         return [...prev, entry];
       });
     } else {
-      console.log(`Found at spot ${spot} in the cart`);
+      console.log(`Found at spot ${spot} in the cart - for SideCart`);
       let newcart = [...cart];
       newcart[spot].amount += amount;
       setCart(newcart);
@@ -125,7 +126,7 @@ function App() {
         <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
         <div className="container bg-slate-700  ">
           {reducedList.map((element) => (
-            <Product key={element.id} id={element.id} item={element.item} cost={element.cost} cartHandler={cartHandler} />
+            <Product key={element.id} element={element} cartHandler={cartHandler} />
           ))}
         </div>
         <Cart item={cart} products={products} clearCart={clearCart} total={total} removeItemHandler={removeItemHandler} />
