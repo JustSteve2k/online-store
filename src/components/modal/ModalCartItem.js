@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import "./ModalCartItem.css";
+
+import ProductContext from "../../context/ProductContext";
 
 export default function ModalCartItem(props) {
+  const productCTX = useContext(ProductContext);
+
+  const deleteHandler = (e) => {
+    productCTX.removeProduct(props.item);
+  };
+
   return (
-    <div>
-      {props.item.count}ea - {props.item.item}
+    <div className="lineItem">
+      <span className="cartEntry">
+        {props.item.count}ea - {props.item.item}
+      </span>
+      <button className="deleteButton" onClick={deleteHandler}>
+        Remove item
+      </button>
     </div>
   );
 }

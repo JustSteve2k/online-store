@@ -13,23 +13,27 @@ const cartReducer = (state, action) => {
   //      categories: String,
   //      }
 
+  let updatedItems;
+  let updatedItem;
+  let total;
+  let position;
+  let exCartItem;
+  let finalAmt;
+
   switch (action.type) {
     case "ADD_PRODUCT":
-      let updatedItems;
-
-      let total;
       total = state.totalAmount + action.item.cost;
 
       // Finds it in the cart then makes a copy of that item.
-      let position = state.items.findIndex((element) => element.id === action.item.id);
-      let exCartItem = state.items[position];
+      position = state.items.findIndex((element) => element.id === action.item.id);
+      exCartItem = state.items[position];
 
       // If it is already in the cart.
       // if exCartItem is a definable item.
       if (exCartItem) {
         console.log(`yep its already inside the cart at spot ${position} - for Modal Cart`);
 
-        const updatedItem = {
+        updatedItem = {
           ...exCartItem,
           count: exCartItem.count + 1,
         };
@@ -55,7 +59,7 @@ const cartReducer = (state, action) => {
       total = total.toFixed(2);
       total = parseFloat(total);
 
-      let finalAmt = (total * 1.08).toFixed(2);
+      finalAmt = (total * 1.08).toFixed(2);
       finalAmt = parseFloat(finalAmt);
 
       // console.log(`Final amount is ${finalAmt}`);
@@ -66,10 +70,42 @@ const cartReducer = (state, action) => {
         totalWTax: finalAmt,
       };
 
-    case "REMOVE_PRODUCT":
+    case "REMOVE_PRODUCT": {
       console.log("Removing a product from context");
-      return state;
+      console.log(action.item);
 
+      // Find position of item in array.
+
+      position = state.items.findIndex((element) => element.id === action.item.id);
+      exCartItem = state.items[position];
+
+      updatedItem = {
+        ...exCartItem,
+        count: exCartItem.count - 1,
+      };
+
+      updatedItems = [...state.items];
+      updatedItems[position] = updatedItem;
+
+      if (updatedItem.count === 0) {
+        updatedItems.splice(position, 1);
+      }
+
+      // Subtract item cost * amount removed.
+      total = state.totalAmount - exCartItem.cost;
+
+      total = total.toFixed(2);
+      total = parseFloat(total);
+
+      finalAmt = (total * 1.08).toFixed(2);
+      finalAmt = parseFloat(finalAmt);
+
+      return {
+        items: updatedItems,
+        totalAmount: total,
+        totalWTax: finalAmt,
+      };
+    }
     default:
       return state;
   }
@@ -83,9 +119,9 @@ export default function ProductProvider({ children }) {
     dispatchCartAction({ type: "ADD_PRODUCT", item: item });
   };
 
-  const removeProductHandler = () => {
+  const removeProductHandler = (item) => {
     // console.log("this will remove a product");
-    dispatchCartAction({ type: "REMOVE_PRODUCT" });
+    dispatchCartAction({ type: "REMOVE_PRODUCT", item: item });
   };
 
   const productContext = {
