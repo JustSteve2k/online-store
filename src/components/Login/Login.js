@@ -1,31 +1,36 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
 
 import { LoggedInContext } from "../../context/LoggedInContext";
 
 export default function Login(props) {
   const { loginHandler } = useContext(LoggedInContext);
-
-  let username = "";
-  let password = "";
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
 
   const confirmHandler = (e) => {
-    // console.log(`${username} - is the username`);
-    // console.log(`${password} - is the username`);
-
-    if (username != "" && password != "") {
-      loginHandler(username, password);
+    if (user !== "" && pass !== "") {
+      loginHandler(user, pass);
       props.showLoginHandler();
+      console.log("if is running!");
     }
     e.preventDefault();
+
+    console.log("finished!");
   };
 
   const updateUser = (e) => {
-    username = e.target.value;
+    setUser(e.target.value);
   };
 
   const updatePass = (e) => {
-    password = e.target.value;
+    setPass(e.target.value);
+  };
+
+  const clearEntries = (e) => {
+    setUser("");
+    setPass("");
+    e.preventDefault();
   };
 
   return (
@@ -35,13 +40,16 @@ export default function Login(props) {
       </button>
       <form className="loginForm">
         <label>UserName</label>
-        {/* <input type="text" onChange={updateUser} value={username} /> */}
-        <input type="text" onChange={updateUser} />
+        <input type="text" onChange={updateUser} value={user} />
         <label>Password</label>
-        <input type="password" onChange={updatePass} />
+        <input type="password" onChange={updatePass} value={pass} />
         <div className="formButtons">
-          {/* <button>Clear</button> */}
-          <button onClick={confirmHandler}>Ok</button>
+          <button type="submit" onClick={confirmHandler}>
+            Ok
+          </button>
+          <button type="button" onClick={clearEntries}>
+            Clear
+          </button>
         </div>
       </form>
     </div>

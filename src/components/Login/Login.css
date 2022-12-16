@@ -1,11 +1,10 @@
 .loginContainer {
   display: relative;
-  width: 30rem;
+  width: 30%;
   height: 10rem;
   background-color: blue;
-  position: absolute;
-  top: 2rem;
-  left: 20rem;
+  position: fixed;
+  margin: 5rem 35% 0rem;
   box-shadow: 0px 0px 12px black;
   border-radius: 12px;
 }
@@ -14,23 +13,27 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  z-index: 2;
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
+  width: 90%;
+  /* border: 1px solid red; */
   top: 1rem;
-  left: 2rem;
+  margin: 0 auto 0;
+  /* left: 2rem; */
 }
 
 .loginForm input {
-  width: 25rem;
+  width: 90%;
 }
 
 .loginForm button {
-  width: 3rem;
+  width: 4rem;
+  margin: 0rem 0.5rem 0rem;
 }
 
 .formButtons {
