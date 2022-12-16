@@ -12,7 +12,7 @@ export default function Header(props) {
       <div className="links">
         {isAdmin && <button>AdminPanel</button>}
         {isLoggedIn ? <button>{currentUser}</button> : <button onClick={props.showLoginHandler}>Login</button>}
-        <button onClick={props.displayCartHandler}>Cart</button>
+        <button onClick={props.showCartHandler}>Cart</button>
         {isLoggedIn && <button onClick={logOutHandler}>LogOut</button>}
       </div>
     </div>
