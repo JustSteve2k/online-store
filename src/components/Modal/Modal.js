@@ -9,6 +9,8 @@ import ProductContext from "../../context/ProductContext";
 export default function Modal(props) {
   const productCTX = useContext(ProductContext);
 
+  let header = "Cart";
+
   const clearCartHandler = () => {
     productCTX.clearCart();
   };
@@ -36,8 +38,7 @@ export default function Modal(props) {
 
   return (
     <div className="modalContainer">
-      {/* MODAL */}
-      <h2>Cart</h2>
+      <h2>{header}</h2>
       <button className="modalClose" onClick={props.showCartHandler}>
         X
       </button>
