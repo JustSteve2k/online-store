@@ -10,6 +10,10 @@ export default function Modal(props) {
 
   // id={item.id} count={item.count} item={item.item}
 
+  const clearCartHandler = () => {
+    productCTX.clearCart();
+  };
+
   console.log(`The new final amount is ${productCTX.totalWTax}`);
 
   let cartStatus = <p>The cart is empty atm!</p>;
@@ -37,6 +41,9 @@ export default function Modal(props) {
       <h2>Cart</h2>
       <button className="modalClose" onClick={props.displayCartHandler}>
         X
+      </button>
+      <button className="modalClearCart" onClick={clearCartHandler}>
+        ClearCart
       </button>
       <div className={productCTX.items.length > 0 ? "modalInside" : ""}>{cartStatus}</div>
       {totals}

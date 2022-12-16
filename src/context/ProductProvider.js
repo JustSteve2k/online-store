@@ -106,6 +106,20 @@ const cartReducer = (state, action) => {
         totalWTax: finalAmt,
       };
     }
+
+    case "CLEAR_CART":
+      console.log("This will clear the cart eventually.");
+
+      updatedItems = [];
+      total = 0;
+      finalAmt = 0;
+
+      return {
+        items: updatedItems,
+        totalAmount: total,
+        totalWTax: finalAmt,
+      };
+
     default:
       return state;
   }
@@ -124,6 +138,10 @@ export default function ProductProvider({ children }) {
     dispatchCartAction({ type: "REMOVE_PRODUCT", item: item });
   };
 
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: "CLEAR_CART" });
+  };
+
   const productContext = {
     TEST_PRODUCT: "Testproductworks!",
     items: cartState.items,
@@ -138,6 +156,7 @@ export default function ProductProvider({ children }) {
     totalWTax: cartState.totalWTax,
     addProduct: addProductHandler,
     removeProduct: removeProductHandler,
+    clearCart: clearCartHandler,
   };
 
   return <ProductContext.Provider value={productContext}>{children}</ProductContext.Provider>;
