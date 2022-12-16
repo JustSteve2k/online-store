@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
-import "./modal.css";
+import "./Modal.css";
 
 import ModalCartItem from "./ModalCartItem";
 
 import ProductContext from "../../context/ProductContext";
 
+// Goal is to eventually make this product more extendable.
 export default function Modal(props) {
   const productCTX = useContext(ProductContext);
-
-  // id={item.id} count={item.count} item={item.item}
 
   const clearCartHandler = () => {
     productCTX.clearCart();
@@ -39,7 +38,7 @@ export default function Modal(props) {
     <div className="modalContainer">
       {/* MODAL */}
       <h2>Cart</h2>
-      <button className="modalClose" onClick={props.displayCartHandler}>
+      <button className="modalClose" onClick={props.showCartHandler}>
         X
       </button>
       <button className="modalClearCart" onClick={clearCartHandler}>
