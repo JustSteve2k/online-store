@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
-import Modal from "../modal/Modal";
+import Modal from "../Modal/Modal";
 import Login from "../Login/Login";
 
 export default function Store(props) {
