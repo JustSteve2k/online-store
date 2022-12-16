@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import "./Product.css";
 
-import ProductContext from "../context/ProductContext";
+import ProductContext from "../../context/ProductContext";
 
 export default function Product(props) {
   const [amount, setAmount] = useState(1);
@@ -10,10 +10,6 @@ export default function Product(props) {
   const productCTX = useContext(ProductContext);
 
   const clickHandler = () => {
-    let item = props.element.item;
-    let id = props.element.id;
-    let cost = props.element.cost;
-    props.cartHandler(item, id, amount, cost);
     productCTX.addProduct(props.element);
   };
 
