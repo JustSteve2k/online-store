@@ -1,16 +1,49 @@
 .headerMain {
-  background-color: lightblue;
+  background-color: #1b2435;
   height: 6vh;
   position: relative;
+  color: white;
 }
 
 .links {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: absolute;
   right: 1rem;
   top: 1rem;
   width: 20rem;
+}
+
+.links button {
+  background-color: transparent;
+}
+
+.cartButton {
+  width: 10rem;
+  border: 1px solid red;
+  background-color: yellow;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

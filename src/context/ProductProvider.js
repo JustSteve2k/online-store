@@ -142,16 +142,17 @@ export default function ProductProvider({ children }) {
     dispatchCartAction({ type: "CLEAR_CART" });
   };
 
+  const totalAmountOfItems = () => {
+    let total;
+    total = cartState.items.reduce((total, element) => total + element.count, 0);
+
+    return total;
+  };
+
   const productContext = {
     TEST_PRODUCT: "Testproductworks!",
     items: cartState.items,
-    // ==== test items ====
-    // items: [
-    //   { id: 1, item: "shirt" },
-    //   { id: 2, item: "shoes" },
-    //   { id: 3, item: "tie" },
-    //   { id: 4, item: "socks" },
-    // ],
+    totalItems: totalAmountOfItems(),
     totalAmount: cartState.totalAmount,
     totalWTax: cartState.totalWTax,
     addProduct: addProductHandler,
