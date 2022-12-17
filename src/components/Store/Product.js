@@ -11,7 +11,12 @@ export default function Product(props) {
   const productCTX = useContext(ProductContext);
 
   const clickHandler = () => {
-    productCTX.addProduct(props.element);
+    let order = {
+      ...props.element,
+      amount,
+    };
+
+    productCTX.addProduct(order);
   };
 
   const amountHandler = (event) => {

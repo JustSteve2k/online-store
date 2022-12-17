@@ -35,7 +35,7 @@ const cartReducer = (state, action) => {
 
         updatedItem = {
           ...exCartItem,
-          count: exCartItem.count + 1,
+          count: exCartItem.count + action.item.amount,
         };
 
         updatedItems = [...state.items];
@@ -45,11 +45,11 @@ const cartReducer = (state, action) => {
       // if not in the cart, add it
       // if exCartItem is undefined
       if (!exCartItem) {
-        console.log(`Adding new product to context with an id of ${action.item.id}`);
+        console.log(`Adding new product to context with an id of ${action.item.id} of an amount of ${action.item.amount}`);
 
         let newItem = {
           ...action.item,
-          count: 1,
+          count: action.item.amount,
         };
 
         updatedItems = [...state.items, newItem];
