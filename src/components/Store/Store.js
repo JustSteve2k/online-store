@@ -4,6 +4,8 @@ import Product from "./Product";
 import Modal from "../Modal/Modal";
 import Login from "../Login/Login";
 
+import "../Store/Store.css";
+
 export default function Store(props) {
   const DUMMY_PRODUCT_LIST = [
     { id: 1, item: "shirt", cost: 19.99, categories: "top" },
@@ -16,6 +18,7 @@ export default function Store(props) {
     { id: 8, item: "suspenders", cost: 12.99, categories: "accessory" },
     { id: 9, item: "bowtie", cost: 4.99, categories: "accessory" },
     { id: 10, item: "pipe", cost: 11.99, categories: "accesory" },
+    { id: 11, item: "jorts", cost: 18.99, categories: "bottom" },
   ];
 
   //   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
@@ -46,13 +49,20 @@ export default function Store(props) {
 
   let reducedList = products.filter((element) => filter.includes(element.categories));
 
+  let storeStatus = (
+    <div className="emptyMessage">
+      <p>There are no products that meet your criteria!</p>
+    </div>
+  );
+
   return (
     <div className="App">
       <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
-      <div className="container bg-slate-800  ">
+      <div className="productsContainer">
         {reducedList.map((element) => (
           <Product key={element.id} element={element} />
         ))}
+        {reducedList.length === 0 && storeStatus}
       </div>
       {props.showCart && <Modal showCartHandler={props.showCartHandler} />}
       {props.showLogin && <Login showLoginHandler={props.showLoginHandler} />}

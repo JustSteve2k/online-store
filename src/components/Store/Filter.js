@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Filter.css";
 
@@ -13,7 +13,7 @@ export default function Filter(props) {
   };
 
   const findIfAll = (array) => {
-    if (array.length == 4) return true;
+    if (array.length === 4) return true;
     else return false;
   };
 
@@ -24,7 +24,7 @@ export default function Filter(props) {
   const accessories = findIfActive("accessory");
 
   return (
-    <div className="filterContainer">
+    <div className="filterContainer bg-slate-800">
       <h3>Product Filters</h3>
       <button className={all ? "active" : "inactive"} onClick={() => props.resetFilterHandler()}>
         All
@@ -42,7 +42,7 @@ export default function Filter(props) {
         Accessories
       </button>
       <button className="currentListBtn" onClick={filterListHandler}>
-        Show the current list
+        Show the current list (DEV)
       </button>
     </div>
   );

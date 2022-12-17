@@ -4,28 +4,26 @@
   min-height: 94vh;
   flex-direction: row;
   position: relative;
-  background-color: rgb(82, 80, 80);
+  /* background-color: rgb(82, 80, 80); */
+  background-color: black;
 }
 
-.container {
-  width: 55rem;
-  /* height: 30rem; */
-  min-height: 0vh;
-  margin: 0 auto;
+.productsContainer {
+  width: 70%;
+  /* height: 100%; */
+  min-height: 0;
+  margin: 1rem auto;
   border: 1px solid black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: #1e293b;
 }
 
-button {
-  background-color: rgb(15, 118, 110) !important;
+.emptyMessage {
+  color: white;
+  height: 5rem;
+  margin: 10rem auto;
+  /* border: 1px solid white; */
+  font-size: larger;
 }
-
-button:hover {
-  background-color: aqua;
-  transition: 0.25s;
-  box-shadow: 0px 0px 10px black;
-}
-
-/*Need to determine which is redundant with App.js file, some need to be up higher. */

@@ -1,19 +1,4 @@
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(82, 80, 80);
-}
-
-.container {
-  width: 55rem;
-  min-height: 94vh;
-  margin: 0 auto;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+/* Highest Component */
 
 button {
   background-color: rgb(15, 118, 110);

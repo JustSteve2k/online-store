@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import productImage from "../../Images/generic-product.jpg";
 
 import "./Product.css";
 
@@ -21,9 +22,13 @@ export default function Product(props) {
 
   return (
     <div className="product">
-      <div className="productImage">Product Image</div>
-      <div>{props.element.item}</div>
-      <div>${props.element.cost}</div>
+      <div className="productImage">
+        <img src={productImage} alt="Generic Product" />
+      </div>
+      <span className="productInfo">
+        <div>{props.element.item}</div>
+        <div>${props.element.cost}</div>
+      </span>
       <button className="productButton" onClick={clickHandler}>
         Add to Cart
       </button>

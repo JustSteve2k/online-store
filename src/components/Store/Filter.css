@@ -1,9 +1,14 @@
+h3 {
+  color: white;
+}
+
 .filterContainer {
   border: 1px solid black;
+  padding: 0.5rem;
   width: 10rem;
   height: 22rem;
   margin-top: 4rem;
-  margin-left: 2rem;
+  margin-left: 3rem;
   display: flex;
   flex-direction: column;
 }
@@ -20,6 +25,9 @@
 
 .active {
   background-color: aqua;
+
+  transform: scale(1.1);
+  transform: 1.5s;
 }
 
 .currentListBtn {

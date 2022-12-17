@@ -1,7 +1,4 @@
 import { useState } from "react";
-// import Filter from "./components/Filter";
-// import Product from "./components/Product";
-// import Cart from "./components/StarterCart/Cart";
 import Header from "./components/Header";
 import Store from "./components/Store/Store";
 import ComboProvider from "./context/ComboProvider";
