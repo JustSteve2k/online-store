@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Online Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Version 0.1
+
+This project is a generic online store that utilizes react with a bit of tailwind.  
+It will be designed with more configuration in mind in later versions, but you are currently working with an early rendition of this project.
+
+## Roadmap
+
+Eventualy this will be a full fledged online store with configurable backend. Currently it just displays items from a hard coded data set.
+
+==================
 
 ## Available Scripts
 
