@@ -15,9 +15,7 @@ export default function Modal(props) {
     productCTX.clearCart();
   };
 
-  console.log(`The new final amount is ${productCTX.totalWTax}`);
-
-  let cartStatus = <p>The cart is empty atm!</p>;
+  let cartStatus = <p className="emptyCart">The cart is empty atm!</p>;
 
   if (productCTX.items.length > 0) {
     cartStatus = productCTX.items.map((item) => {
@@ -36,17 +34,23 @@ export default function Modal(props) {
     );
   }
 
+  const stopProp = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="modalContainer">
-      <h2>{header}</h2>
-      <button className="modalClose" onClick={props.showCartHandler}>
-        X
-      </button>
-      <button className="modalClearCart" onClick={clearCartHandler}>
-        ClearCart
-      </button>
-      <div className={productCTX.items.length > 0 ? "modalInside" : ""}>{cartStatus}</div>
-      {totals}
+    <div className="background" onClick={props.showCartHandler}>
+      <div className="modalContainer" onClick={stopProp}>
+        <h2>{header}</h2>
+        <button className="modalClose" onClick={props.showCartHandler}>
+          X
+        </button>
+        <button className="modalClearCart" onClick={clearCartHandler}>
+          ClearCart
+        </button>
+        <div className={productCTX.items.length > 0 ? "modalInside" : ""}>{cartStatus}</div>
+        {totals}
+      </div>
     </div>
   );
 }

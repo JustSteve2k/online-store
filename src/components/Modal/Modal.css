@@ -1,13 +1,27 @@
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modalContainer {
   display: relative;
   width: 30%;
-  min-height: 6rem;
-  background-color: rgb(194, 191, 191);
+  min-height: 8rem;
+  /* background-color: rgb(194, 191, 191); */
+  background-color: #404c5e;
   border: 1px solid black;
   border-radius: 12px;
   box-shadow: 0px 0px 12px black;
-  margin: 5rem 35% 0rem;
+  margin: 10rem 35% 0rem;
   position: fixed;
+  color: white;
+}
+
+.modalContainer button {
+  color: black;
 }
 
 .modalInside {
@@ -28,4 +42,10 @@
   width: 5rem;
   top: 1rem;
   right: 4rem;
+}
+
+.emptyCart {
+  /* border: 1px solid red; */
+  font-weight: bold;
+  margin-top: 2rem;
 }

@@ -12,11 +12,7 @@ export default function Login(props) {
     if (user !== "" && pass !== "") {
       loginHandler(user, pass);
       props.showLoginHandler();
-      console.log("if is running!");
     }
-    e.preventDefault();
-
-    console.log("finished!");
   };
 
   const updateUser = (e) => {
@@ -33,25 +29,32 @@ export default function Login(props) {
     e.preventDefault();
   };
 
+  const stopProp = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="loginContainer">
-      <button className="loginClose" onClick={props.showLoginHandler}>
-        X
-      </button>
-      <form className="loginForm">
-        <label>UserName</label>
-        <input type="text" onChange={updateUser} value={user} />
-        <label>Password</label>
-        <input type="password" onChange={updatePass} value={pass} />
-        <div className="formButtons">
-          <button type="submit" onClick={confirmHandler}>
-            Ok
-          </button>
-          <button type="button" onClick={clearEntries}>
-            Clear
-          </button>
-        </div>
-      </form>
+    <div className="background" onClick={props.showLoginHandler}>
+      {/* <div className="background"> */}
+      <div className="loginContainer" onClick={stopProp}>
+        <button className="loginClose" onClick={props.showLoginHandler}>
+          X
+        </button>
+        <form className="loginForm">
+          <label>UserName</label>
+          <input type="text" onChange={updateUser} value={user} />
+          <label>Password</label>
+          <input type="password" onChange={updatePass} value={pass} />
+          <div className="formButtons">
+            <button type="submit" onClick={confirmHandler}>
+              Ok
+            </button>
+            <button type="button" onClick={clearEntries}>
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

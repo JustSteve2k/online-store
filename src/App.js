@@ -9,7 +9,9 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
-  const showCartHandler = () => {
+  const showCartHandler = (e) => {
+    // if (e.target !== e.currentTarget) return;
+
     setShowCart((prev) => !prev);
   };
 
