@@ -14,10 +14,10 @@ export default function ModalCartItem(props) {
   return (
     <div className="lineItem">
       <span className="cartEntry">
-        {props.item.count}ea - {props.item.item}
+        {props.item.count} ea - {props.item.item}
       </span>
       <button className="deleteButton" onClick={deleteHandler}>
-        Remove item
+        Remove
       </button>
     </div>
   );
