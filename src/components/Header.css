@@ -5,6 +5,14 @@
   color: white;
 }
 
+.headerMain img {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 0.5rem;
+  left: 3rem;
+}
+
 .links {
   display: flex;
   align-items: center;

@@ -1,5 +1,8 @@
 import React, { useContext, useState } from "react";
+
 import "./Header.css";
+
+import logo from "../Images/logo-sm.png";
 
 import { LoggedInContext } from "../context/LoggedInContext";
 import ProductContext from "../context/ProductContext";
@@ -11,8 +14,6 @@ export default function Header(props) {
 
   const { currentUser, isAdmin, isLoggedIn, logOutHandler } = useContext(LoggedInContext);
   const { items, totalItems } = useContext(ProductContext);
-
-  console.log(`totalItems - ${totalItems}`);
 
   const cartBtnClasses = `${btnIsHighlighted ? "bump" : ""} ${totalItems > 0 ? "cartButton" : ""}`;
 
@@ -29,16 +30,17 @@ export default function Header(props) {
     };
   }, [items]);
 
-  const cartCount = totalItems > 0 ? <span> - {totalItems}</span> : "";
+  // const cartCount = totalItems > 0 ? <span> - {totalItems}</span> : "";
+  const cartCount = <> Cart {totalItems > 0 ? <span> - {totalItems}</span> : ""} </>;
 
   return (
     <div className="headerMain">
-      Logo!
+      <img src={logo} alt="logo" />
       <div className="links">
         {isAdmin && <button>AdminPanel</button>}
         {isLoggedIn ? <button>{currentUser}</button> : <button onClick={props.showLoginHandler}>Login</button>}
         <button className={cartBtnClasses} onClick={props.showCartHandler}>
-          Cart{cartCount}
+          {cartCount}
         </button>
         {isLoggedIn && <button onClick={logOutHandler}>LogOut</button>}
       </div>
