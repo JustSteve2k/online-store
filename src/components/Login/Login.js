@@ -44,7 +44,7 @@ export default function Login(props) {
           <label>UserName</label>
           <input type="text" onChange={updateUser} value={user} />
           <label>Password</label>
-          <input type="password" onChange={updatePass} value={pass} />
+          <input type="password" onChange={updatePass} value={pass} autoComplete="off" />
           <div className="formButtons">
             <button type="submit" onClick={confirmHandler}>
               Ok
