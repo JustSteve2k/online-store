@@ -1,4 +1,8 @@
 import { useState } from "react";
+
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
+import Home from "./components/Home/Home";
 import Header from "./components/Header";
 import Store from "./components/Store/Store";
 import ComboProvider from "./context/ComboProvider";
@@ -19,10 +23,22 @@ function App() {
     setShowLogin((prev) => !prev);
   };
 
-  return (
-    <ComboProvider>
+  const store = (
+    <div>
+      {" "}
       <Header showCartHandler={showCartHandler} showLoginHandler={showLoginHandler} />
       <Store showCart={showCart} showLogin={showLogin} showCartHandler={showCartHandler} showLoginHandler={showLoginHandler} />
+    </div>
+  );
+
+  return (
+    <ComboProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/store" element={store} />
+        </Routes>
+      </BrowserRouter>
     </ComboProvider>
   );
 }
