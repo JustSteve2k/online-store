@@ -9,7 +9,7 @@ import ProductContext from "../../context/ProductContext";
 export default function Modal(props) {
   const productCTX = useContext(ProductContext);
 
-  let header = "Cart";
+  let header = <div className="cartHeader">Cart</div>;
 
   const clearCartHandler = () => {
     productCTX.clearCart();
@@ -27,7 +27,7 @@ export default function Modal(props) {
 
   if (productCTX.items.length > 0) {
     totals = (
-      <div>
+      <div className="totals">
         <h2>The total cost is {productCTX.totalAmount}</h2>
         <h2>Total after tax is ${productCTX.totalWTax}</h2>
       </div>

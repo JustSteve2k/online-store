@@ -22,6 +22,15 @@
 
 .modalContainer button {
   color: black;
+  display: relative;
+}
+
+.cartHeader {
+  /* border: 1px solid white; */
+  text-align: center;
+  width: 15rem;
+  margin: 1rem auto;
+  font-weight: bold;
 }
 
 .modalInside {
@@ -48,4 +57,11 @@
   /* border: 1px solid red; */
   font-weight: bold;
   margin-top: 2rem;
+}
+
+.totals {
+  /* border: 1px solid white; */
+  width: 15rem;
+  text-align: center;
+  margin: 1.5rem auto;
 }
