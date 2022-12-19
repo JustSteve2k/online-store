@@ -64,8 +64,8 @@ export default function Store(props) {
         ))}
         {reducedList.length === 0 && storeStatus}
       </div>
-      {props.showCart && <Modal showCartHandler={props.showCartHandler} />}
-      {props.showLogin && <Login showLoginHandler={props.showLoginHandler} />}
+      {/* {props.showCart && <Modal showCartHandler={props.showCartHandler} />}
+      {props.showLogin && <Login showLoginHandler={props.showLoginHandler} />} */}
     </div>
   );
 }
