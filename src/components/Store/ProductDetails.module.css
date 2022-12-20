@@ -1,0 +1,17 @@
+.background {
+  background-color: aquamarine;
+}
+
+.productContainer {
+  border: 1px solid black;
+  width: 90%;
+  height: 20rem;
+  margin: 5rem auto;
+}
+
+.productDescription {
+  border: 1px solid rgb(189, 22, 22);
+  position: absolute;
+  right: 0;
+  width: 50%;
+}
