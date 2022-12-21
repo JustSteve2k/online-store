@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Filter.css";
+import style from "./Filter.module.css";
 
 export default function Filter(props) {
   const filterListHandler = () => {
@@ -24,21 +24,21 @@ export default function Filter(props) {
   const accessories = findIfActive("accessory");
 
   return (
-    <div className="filterContainer bg-slate-800">
+    <div className={style.filterContainer + " bg-slate-800"}>
       <h3>Product Filters</h3>
-      <button className={all ? "active" : "inactive"} onClick={() => props.resetFilterHandler()}>
+      <button className={all ? style.active : style.inactive} onClick={() => props.resetFilterHandler()}>
         All
       </button>
-      <button className={tops ? "active" : "inactive"} onClick={() => props.filterHandler("top")}>
+      <button className={tops ? style.active : style.inactive} onClick={() => props.filterHandler("top")}>
         Tops
       </button>
-      <button className={bottoms ? "active" : "inactive"} onClick={() => props.filterHandler("bottom")}>
+      <button className={bottoms ? style.active : style.inactive} onClick={() => props.filterHandler("bottom")}>
         Bottoms
       </button>
-      <button className={shoes ? "active" : "inactive"} onClick={() => props.filterHandler("shoes")}>
+      <button className={shoes ? style.active : style.inactive} onClick={() => props.filterHandler("shoes")}>
         Shoes
       </button>
-      <button className={accessories ? "active" : "inactive"} onClick={() => props.filterHandler("accessory")}>
+      <button className={accessories ? style.active : style.inactive} onClick={() => props.filterHandler("accessory")}>
         Accessories
       </button>
       <button className="currentListBtn" onClick={filterListHandler}>
