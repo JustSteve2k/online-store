@@ -27,7 +27,7 @@ export default function ProductDetails() {
 
   return (
     <div className="bg-slate-200 fixed h-screen">
-      <div className="  w-10/12 bg-slate-300 flex mx-auto mt-16 relative shadow-xl ">
+      <div className="  w-10/12 bg-slate-300 flex mx-auto mt-16 relative shadow-xl rounded-xl ">
         <div className="w-1/2  my-auto text-center">
           <img src={productImage} />
         </div>
@@ -53,7 +53,7 @@ export default function ProductDetails() {
             recusandae, aspernatur necessitatibus iste officia saepe dicta cupiditate, eius placeat dolor ratione omnis ex laboriosam harum accusamus.
           </p>
           <div className="w-5/6 mb-8 mx-auto flex justify-end">
-            <button onClick={clickHandler} className="">
+            <button onClick={clickHandler} className="w-48 bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150">
               Add 1 item to cart
             </button>
           </div>
@@ -61,7 +61,7 @@ export default function ProductDetails() {
       </div>
 
       <div className="w-5/6 mx-auto mt-4 flex justify-end">
-        <NavLink to="/store" className="p-2 w-48 text-center bg-slate-100 hover:bg-slate-600 transition duration-150">
+        <NavLink to="/store" className="p-2 w-48 text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150">
           Return to store <RiHome4Fill className="inline text-2xl " />
         </NavLink>
       </div>

@@ -41,7 +41,7 @@ export default function Filter(props) {
       <button className={accessories ? style.active : style.inactive} onClick={() => props.filterHandler("accessory")}>
         Accessories
       </button>
-      <button className="currentListBtn" onClick={filterListHandler}>
+      <button className="w-2 p-1 bg-slate-400 hover:bg-teal-400 transition duration-150" onClick={filterListHandler}>
         Show the current list (DEV)
       </button>
     </div>

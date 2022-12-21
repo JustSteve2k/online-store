@@ -33,16 +33,16 @@ export default function Product(props) {
       <div className="productImage">
         <img src={productImage} alt="Generic Product" />
       </div>
-      <span className="productInfo">
-        <div>{props.element.item}</div>
+      <span className="productInfo mt-2 ">
+        <NavLink to={newPath} state={{ id: props.element.id, cost: props.element.cost, item: props.element.item, element: props.element }}>
+          <div>{props.element.item}</div>
+        </NavLink>
         <div>${props.element.cost}</div>
       </span>
-      <button className="productButton" onClick={clickHandler}>
+      <button className="w-48 bg-slate-400 p-1 rounded-xl hover:bg-teal-400 hover:rounded-xl transition duration-150 mx-auto mt-2" onClick={clickHandler}>
         Add to Cart
       </button>
-      <NavLink to={newPath} state={{ id: props.element.id, cost: props.element.cost, item: props.element.item, element: props.element }}>
-        third test
-      </NavLink>
+
       <input type="number" className="w-16 m-auto text-center" value={amount} onChange={amountHandler}></input>
     </div>
   );

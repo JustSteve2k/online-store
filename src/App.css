@@ -1,11 +1,11 @@
 /* Highest Component */
 
 button {
-  background-color: rgb(15, 118, 110);
+  /* background-color: rgb(15, 118, 110); */
 }
 
 button:hover {
-  background-color: aqua;
+  /* background-color: aqua;
   transition: 0.25s;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 10px black; */
 }
