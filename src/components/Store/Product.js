@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import productImage from "../../Images/generic-product.jpg";
 
 import "./Product.css";
@@ -25,6 +26,8 @@ export default function Product(props) {
     });
   };
 
+  const newPath = "item/" + props.element.id;
+
   return (
     <div className="product">
       <div className="productImage">
@@ -37,6 +40,9 @@ export default function Product(props) {
       <button className="productButton" onClick={clickHandler}>
         Add to Cart
       </button>
+      <NavLink to={newPath} state={{ id: props.element.id, cost: props.element.cost, item: props.element.item, element: props.element }}>
+        third test
+      </NavLink>
       <input type="number" className="w-16 m-auto text-center" value={amount} onChange={amountHandler}></input>
     </div>
   );
