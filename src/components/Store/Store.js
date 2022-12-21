@@ -8,17 +8,20 @@ import "../Store/Store.css";
 
 export default function Store(props) {
   const DUMMY_PRODUCT_LIST = [
-    { id: 1, item: "shirt", cost: 19.99, categories: "top" },
-    { id: 2, item: "pants", cost: 26.99, categories: "bottom" },
-    { id: 3, item: "shorts", cost: 14.69, categories: "bottom" },
-    { id: 4, item: "hat", cost: 12.99, categories: "accessory" },
-    { id: 5, item: "socks", cost: 6.99, categories: "accesory" },
-    { id: 6, item: "shoes", cost: 49.99, categories: "shoes" },
-    { id: 7, item: "tie", cost: 9.99, categories: "accessory" },
-    { id: 8, item: "suspenders", cost: 12.99, categories: "accessory" },
-    { id: 9, item: "bowtie", cost: 4.99, categories: "accessory" },
-    { id: 10, item: "pipe", cost: 11.99, categories: "accesory" },
-    { id: 11, item: "jorts", cost: 18.99, categories: "bottom" },
+    { id: 1, item: "Shirt", cost: 19.99, categories: "top" },
+    { id: 2, item: "Pants", cost: 26.99, categories: "bottom" },
+    { id: 3, item: "Shorts", cost: 14.69, categories: "bottom" },
+    { id: 4, item: "Hat", cost: 12.99, categories: "accessory" },
+    { id: 5, item: "Socks", cost: 6.99, categories: "accesory" },
+    { id: 6, item: "Shoes", cost: 49.99, categories: "shoes" },
+    { id: 7, item: "Tie", cost: 9.99, categories: "accessory" },
+    { id: 8, item: "Suspenders", cost: 12.99, categories: "accessory" },
+    { id: 9, item: "Bowtie", cost: 4.99, categories: "accessory" },
+    { id: 10, item: "Pipe", cost: 11.99, categories: "accesory" },
+    { id: 11, item: "Jorts", cost: 18.99, categories: "bottom" },
+    { id: 12, item: "Loafers", cost: 63.99, categories: "shoes" },
+    { id: 13, item: "Puffer Jacket", cost: 18.99, categories: "top" },
+    { id: 14, item: "Fake Mustache", cost: 9.99, categories: "accessory" },
   ];
 
   //   const [products, setProducts] = useState(DUMMY_PRODUCT_LIST);
@@ -56,9 +59,9 @@ export default function Store(props) {
   );
 
   return (
-    <div className="App">
+    <div className="App bg-slate-600">
       <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
-      <div className="productsContainer">
+      <div className="productsContainer rounded-xl shadow-xl">
         {reducedList.map((element) => (
           <Product key={element.id} element={element} />
         ))}
