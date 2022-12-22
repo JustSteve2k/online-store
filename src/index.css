@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -11,4 +12,14 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* No w, h, or padding - only look */
+.btnPrimary {
+  @apply text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150
+}
+
+/* Return home button */ 
+.btnHome {
+  @apply p-2 w-48 text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150
 }
