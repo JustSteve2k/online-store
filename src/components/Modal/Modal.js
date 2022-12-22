@@ -15,7 +15,7 @@ export default function Modal(props) {
     productCTX.clearCart();
   };
 
-  let cartStatus = <p className="emptyCart">The cart is empty atm!</p>;
+  let cartStatus = <p className="emptyCart text-center">The cart is empty atm!</p>;
 
   if (productCTX.items.length > 0) {
     cartStatus = productCTX.items.map((item) => {
@@ -42,10 +42,10 @@ export default function Modal(props) {
     <div className="background" onClick={props.showCartHandler}>
       <div className="modalContainer" onClick={stopProp}>
         <h2>{header}</h2>
-        <button className="modalClose" onClick={props.showCartHandler}>
+        <button className="absolute -top-2 -right-2 p-3 bg-slate-300 border-solid border-2 font-bold border-black hover:bg-teal-400" onClick={props.showCartHandler}>
           X
         </button>
-        <button className="modalClearCart" onClick={clearCartHandler}>
+        <button className="modalClearCart btnPrimary" onClick={clearCartHandler}>
           ClearCart
         </button>
         <div className={productCTX.items.length > 0 ? "modalInside" : ""}>{cartStatus}</div>

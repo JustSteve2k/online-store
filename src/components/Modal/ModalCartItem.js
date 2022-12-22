@@ -16,7 +16,7 @@ export default function ModalCartItem(props) {
       <span className="cartEntry">
         {props.item.count} ea - {props.item.item}
       </span>
-      <button className="deleteButton" onClick={deleteHandler}>
+      <button className="deleteButton btnPrimary" onClick={deleteHandler}>
         Remove
       </button>
     </div>
