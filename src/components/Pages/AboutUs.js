@@ -2,9 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { RiHome4Fill } from "react-icons/ri";
 
+import { useTitleSetter } from "../../Utilities/Utilities";
+
+import Data from "../../Data";
+
 // import classes from "./AboutUs.module.css";
 
 export default function AboutUs() {
+
+  useTitleSetter(Data.aboutTitle)
+
   return (
     <div className="bg-zinc-200 h-screen fixed">
       <h2 className="text-center text-3xl p-5">About Us</h2>

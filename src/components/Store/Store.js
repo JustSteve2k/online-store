@@ -6,6 +6,10 @@ import Login from "../Login/Login";
 
 import "../Store/Store.css";
 
+import { useTitleSetter } from "../../Utilities/Utilities";
+
+import Data from "../../Data"
+
 export default function Store(props) {
   const DUMMY_PRODUCT_LIST = [
     { id: 1, item: "Shirt", cost: 19.99, categories: "top" },
@@ -57,6 +61,8 @@ export default function Store(props) {
       <p>There are no products that meet your criteria!</p>
     </div>
   );
+
+  useTitleSetter(Data.storeTitle);
 
   return (
     <div className="App bg-slate-600">

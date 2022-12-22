@@ -8,6 +8,8 @@ import productImage from "../../Images/generic-product.jpg";
 
 import ProductContext from "../../context/ProductContext";
 
+import { useTitleSetter } from "../../Utilities/Utilities";
+
 export default function ProductDetails() {
   // let { productID } = useParams();
 
@@ -24,6 +26,8 @@ export default function ProductDetails() {
 
     productCTX.addProduct(order);
   };
+
+  useTitleSetter(location.state.item + " Details")
 
   return (
     <div className="bg-slate-200 fixed h-screen">

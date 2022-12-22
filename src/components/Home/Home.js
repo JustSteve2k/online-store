@@ -3,8 +3,14 @@ import { NavLink } from "react-router-dom";
 
 import classes from "./Home.module.css";
 
+import { useTitleSetter } from "../../Utilities/Utilities";
+import Data from "../../Data";
+
 export default function Home() {
-  const entryVerbage = "Come find your next purchase.";
+
+  useTitleSetter(Data.homeTitle);
+
+  const entryVerbage = Data.homeScreenGreeting;
 
   return (
     <div className={classes.homeBackground}>

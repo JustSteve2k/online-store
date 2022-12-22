@@ -12,25 +12,25 @@ import Modal from "./components/Modal/Modal";
 import Login from "./components/Login/Login";
 import MainLayout from "./components/Layouts/MainLayout";
 
-
 import "./App.css";
+
+import { useTitleSetter } from "./Utilities/Utilities";
+
+import Data from "./Data"
+
 
 function App() {
   const [showCart, setShowCart] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
   const showCartHandler = (e) => {
-    // if (e.target !== e.currentTarget) return;
-
     setShowCart((prev) => !prev);
   };
 
   const showLoginHandler = () => {
     setShowLogin((prev) => !prev);
   };
-
-  // const errorPage = <div>You found the error page dude.</div>;
-  
+      
   return (
     <ComboProvider>
       <BrowserRouter>
