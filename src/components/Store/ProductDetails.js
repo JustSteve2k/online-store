@@ -61,7 +61,7 @@ export default function ProductDetails() {
       </div>
 
       <div className="w-5/6 mx-auto mt-4 flex justify-end">
-        <NavLink to="/store" className="p-2 w-48 text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150">
+        <NavLink to="/store" className="btnHome">
           Return to store <RiHome4Fill className="inline text-2xl " />
         </NavLink>
       </div>
