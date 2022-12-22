@@ -7,9 +7,11 @@ import Store from "./components/Store/Store";
 import ProductDetails from "./components/Store/ProductDetails";
 import ComboProvider from "./context/ComboProvider";
 import AboutUs from "./components/Pages/AboutUs";
+import Error from "./components/Pages/Error"
 import Modal from "./components/Modal/Modal";
 import Login from "./components/Login/Login";
 import MainLayout from "./components/Layouts/MainLayout";
+
 
 import "./App.css";
 
@@ -27,15 +29,8 @@ function App() {
     setShowLogin((prev) => !prev);
   };
 
-  const errorPage = <div>You found the error page dude.</div>;
-
-  // const passIns = {
-  //   showCart: showCart,
-  //   showLogin: showLogin,
-  //   showCartHandler: showCartHandler,
-  //   showLoginHandler: showLoginHandler,
-  // };
-
+  // const errorPage = <div>You found the error page dude.</div>;
+  
   return (
     <ComboProvider>
       <BrowserRouter>
@@ -48,8 +43,9 @@ function App() {
             <Route index element={<Store />} />
             <Route path="about" element={<AboutUs />} />
             <Route path="/store/item/:productID" element={<ProductDetails />} />
+            <Route path="*" element={<Error/>}/>
           </Route>
-          <Route path="*" element={errorPage} />
+          <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>
       {showCart && <Modal showCartHandler={showCartHandler} />}
