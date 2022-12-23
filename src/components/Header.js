@@ -13,10 +13,13 @@ import { useEffect } from "react";
 export default function Header(props) {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
 
-  const { currentUser, isAdmin, isLoggedIn, logOutHandler } = useContext(LoggedInContext);
+  const { currentUser, isAdmin, isLoggedIn, logOutHandler } =
+    useContext(LoggedInContext);
   const { items, totalItems } = useContext(ProductContext);
 
-  const cartBtnClasses = `${btnIsHighlighted ? "bump" : ""} ${totalItems > 0 ? "cartButton" : ""}`;
+  const cartBtnClasses = `${btnIsHighlighted ? "bump" : ""} ${
+    totalItems > 0 ? "cartButton" : ""
+  }`;
 
   useEffect(() => {
     if (items.length === 0) return;
@@ -31,7 +34,22 @@ export default function Header(props) {
     };
   }, [items]);
 
-  const cartCount = <>Cart {totalItems > 0 ? <span> - {totalItems}</span> : ""}</>;
+  const cartCount = (
+    <>Cart {totalItems > 0 ? <span> - {totalItems}</span> : ""}</>
+  );
+
+  // if (totalItems === 0) {
+  //   console.log("the cart is empty!");
+  //   let save = JSON.parse(localStorage.getItem("OnlineStore"));
+
+  //   console.log("loading items from local storage");
+  //   console.log(save);
+
+  //   Object.keys(save.items).forEach((key) => {
+  //     console.log(key, save.items[key]);
+  //     addProduct(save.items.key);
+  //   });
+  // }
 
   return (
     <div className="headerMain">
@@ -39,11 +57,18 @@ export default function Header(props) {
         <img src={logo} alt="logo" />
       </NavLink>
       <div className="links">
-        <NavLink to="/store/about" className=" hover:bg-teal-400 transition duration-150">
+        <NavLink
+          to="/store/about"
+          className=" hover:bg-teal-400 transition duration-150"
+        >
           About
         </NavLink>
         {isAdmin && <button>AdminPanel</button>}
-        {isLoggedIn ? <button>{currentUser}</button> : <button onClick={props.showLoginHandler}>Login</button>}
+        {isLoggedIn ? (
+          <button>{currentUser}</button>
+        ) : (
+          <button onClick={props.showLoginHandler}>Login</button>
+        )}
         <button className={cartBtnClasses} onClick={props.showCartHandler}>
           {cartCount}
         </button>

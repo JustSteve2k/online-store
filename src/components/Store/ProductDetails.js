@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useParams, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { RiHome4Fill } from "react-icons/ri";
 
 import productImage from "../../Images/generic-product.jpg";
@@ -33,7 +33,7 @@ export default function ProductDetails() {
     <div className="bg-slate-200 fixed h-screen">
       <div className="  w-10/12 bg-slate-300 flex mx-auto mt-16 relative shadow-xl rounded-xl ">
         <div className="w-1/2  my-auto text-center">
-          <img src={productImage} />
+          <img src={productImage} alt="product"/>
         </div>
         <div className="border-l-2 border-solid border-black w-1/2">
           <p className="text-right mr-16 text-3xl font-bold mt-4">{location.state.item}</p>
