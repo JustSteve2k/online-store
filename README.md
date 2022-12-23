@@ -1,5 +1,15 @@
 # Online Store
 
+## Version 0.2
+
+Version 0.2 expands upon the base page adding some additional functionality to the website.
+
+The project has been expaned to utilize routing.
+Opening splash page, about me and product details pages added in.
+Some CSS has been swapped out for tailwind, further migration to happen in the future. Some cleanup to the overall look has occured in the cart and various other places.
+Ability to save and load cart to local storage has been added.
+Configuration file has been added to allow consolidated customization outside the main files.
+
 ## Version 0.1
 
 This project is a generic online store that utilizes react with a bit of tailwind.  
