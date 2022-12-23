@@ -9,6 +9,7 @@ const ProductContext = React.createContext({
   addProduct: () => {},
   removeProduct: () => {},
   clearCart: () => {},
+  loadCart: () => {},
 });
 
 export default ProductContext;
