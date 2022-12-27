@@ -65,7 +65,7 @@ export default function Header(props) {
         </NavLink>
         {isAdmin && <button>AdminPanel</button>}
         {isLoggedIn ? (
-          <button>{currentUser}</button>
+          <NavLink to="/store/userprofile">{currentUser}</NavLink>
         ) : (
           <button onClick={props.showLoginHandler}>Login</button>
         )}
