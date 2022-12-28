@@ -8,6 +8,7 @@ import ProductDetails from "./components/Store/ProductDetails";
 import ComboProvider from "./context/ComboProvider";
 import AboutUs from "./components/Pages/AboutUs";
 import UserProfile from "./components/Pages/UserProfile";
+import Admin from "./components/Pages/Admin";
 import Error from "./components/Pages/Error";
 import Modal from "./components/Modal/Modal";
 import Login from "./components/Login/Login";
@@ -46,6 +47,7 @@ function App() {
             <Route index element={<Store />} />
             <Route path="about" element={<AboutUs />} />
             <Route path="userprofile" element={<UserProfile />} />
+            <Route path="admin" element={<Admin />} />
             <Route path="/store/item/:productID" element={<ProductDetails />} />
             <Route path="*" element={<Error />} />
           </Route>

@@ -63,7 +63,7 @@ export default function Header(props) {
         >
           About
         </NavLink>
-        {isAdmin && <button>AdminPanel</button>}
+        {isAdmin && <NavLink to="/store/admin">AdminPanel</NavLink>}
         {isLoggedIn ? (
           <NavLink to="/store/userprofile">{currentUser}</NavLink>
         ) : (
