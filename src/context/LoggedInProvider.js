@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { LoggedInContext } from "./LoggedInContext";
 
-// export const LoggedInContext = React.createContext();
+import Data from "../Data";
 
 export default function LoggedInProvider({ children }) {
   const contextTest = "works!";
@@ -11,8 +11,8 @@ export default function LoggedInProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = (user, pass) => {
-    console.log(`${user} - is the username`);
-    console.log(`${pass} - is the username`);
+    Data.verboseMode && console.log(`${user} - is the username`);
+    Data.verboseMode && console.log(`${pass} - is the username`);
 
     setCurrentUser(user);
     setIsLoggedIn((prev) => !prev);
@@ -25,5 +25,18 @@ export default function LoggedInProvider({ children }) {
     setIsAdmin(false);
   };
 
-  return <LoggedInContext.Provider value={{ contextTest, currentUser, isAdmin, isLoggedIn, loginHandler, logOutHandler }}>{children}</LoggedInContext.Provider>;
+  return (
+    <LoggedInContext.Provider
+      value={{
+        contextTest,
+        currentUser,
+        isAdmin,
+        isLoggedIn,
+        loginHandler,
+        logOutHandler,
+      }}
+    >
+      {children}
+    </LoggedInContext.Provider>
+  );
 }
