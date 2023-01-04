@@ -33,7 +33,7 @@ export default function Product(props) {
       <div className="productImage">
         <img src={productImage} alt="Generic Product" />
       </div>
-      <span className="productInfo mt-2 ">
+      <span className="productInfo mt-2 text-white ">
         <NavLink to={newPath} state={{ id: props.element.id, cost: props.element.cost, item: props.element.item, element: props.element }}>
           <div>{props.element.item}</div>
         </NavLink>
