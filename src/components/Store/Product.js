@@ -29,7 +29,7 @@ export default function Product(props) {
   const newPath = "item/" + props.element.id;
 
   return (
-    <div className="product flex flex-col justify-center bg-slate-700 w-96 h-96">
+    <div className="product flex flex-col justify-center bg-slate-700 w-96 h-96 my-2 mx-auto shadow-xl">
       <div className="productImage h-60 border-black border-solid border-2">
         <img src={productImage} alt="Generic Product" />
       </div>
