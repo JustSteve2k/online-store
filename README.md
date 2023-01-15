@@ -1,5 +1,10 @@
 # Online Store
 
+## Version 0.2.1
+
+Version 0.2.1 removes some of the css and replaces it with tailwind.
+Also includes minor bugfixes.
+
 ## Version 0.2
 
 Version 0.2 expands upon the base page adding some additional functionality to the website.
