@@ -1,5 +1,7 @@
 import React from "react";
 
+import Config from "../../Config";
+
 import style from "./Filter.module.css";
 
 export default function Filter(props) {
@@ -41,9 +43,11 @@ export default function Filter(props) {
       <button className={accessories ? style.active : style.inactive} onClick={() => props.filterHandler("accessory")}>
         Accessories
       </button>
-      <button className="w-2 p-1 bg-slate-400 hover:bg-teal-400 transition duration-150" onClick={filterListHandler}>
-        Show the current list (DEV)
-      </button>
+      {Config.devMode && (
+        <button className="w-2 p-1 bg-slate-400 hover:bg-teal-400 transition duration-150" onClick={filterListHandler}>
+          Show the current list (DEV)
+        </button>
+      )}
     </div>
   );
 }
