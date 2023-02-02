@@ -9,6 +9,7 @@ import ComboProvider from "./context/ComboProvider";
 import AboutUs from "./components/Pages/AboutUs";
 import UserProfile from "./components/Pages/UserProfile";
 import Admin from "./components/Pages/Admin";
+import EditProducts from "./components/Pages/EditProducts";
 import Error from "./components/Pages/Error";
 import Modal from "./components/Modal/Modal";
 import Login from "./components/Login/Login";
@@ -35,19 +36,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/store"
-            element={
-              <MainLayout
-                showCart={showCart}
-                showLogin={showLogin}
-                showCartHandler={showCartHandler}
-                showLoginHandler={showLoginHandler}
-              />
-            }
+            element={<MainLayout showCart={showCart} showLogin={showLogin} showCartHandler={showCartHandler} showLoginHandler={showLoginHandler} />}
           >
             <Route index element={<Store />} />
             <Route path="about" element={<AboutUs />} />
             <Route path="userprofile" element={<UserProfile />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="editproducts" element={<EditProducts />} />
             <Route path="/store/item/:productID" element={<ProductDetails />} />
             <Route path="*" element={<Error />} />
           </Route>
