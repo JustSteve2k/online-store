@@ -5,9 +5,10 @@ import { RiHome4Fill } from "react-icons/ri";
 export default function Error() {
   return (
     <div className="bg-zinc-200 h-screen fixed w-screen">
-      <h2 className="text-center text-3xl p-5">About Us</h2>
+      <h2 className="text-center text-3xl p-5">ERROR 404</h2>
       <p className="bg-zinc-300 shadow-xl p-10 mx-auto mt-10 w-5/6 text-lg text-center">
-        Not sure how you ended up here, but you're lost! <br/><br/>
+        Not sure how you ended up here, but you're lost! <br />
+        <br />
         You should head back to the store.
       </p>
       <div className="w-5/6 mx-auto mt-4 flex justify-end">
