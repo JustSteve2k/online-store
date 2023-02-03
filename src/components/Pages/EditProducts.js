@@ -1,27 +1,143 @@
-import React, { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
 import { LoggedInContext } from "../../context/LoggedInContext";
 
 export default function EditProducts() {
   const loggedInCTX = useContext(LoggedInContext);
 
+  const [id, setId] = useState("");
+  const [item, setItem] = useState("");
+  const [cost, setCost] = useState("");
+  const [categories, setCategories] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [description, setDescription] = useState("");
+
   // if (!loggedInCTX.isLoggedIn && !loggedInCTX.isAdmin) return <Navigate to="/store" />;
 
-  const retrieveHandler = () => {
-    alert("Retrieve button works!");
+  const retrieveHandler = async () => {
+    // alert("Retrieve button works!");
+
+    // const response = await fetch("http://localhost:5000/main", { method: "GET", mode: "no-cors" });
+    // const data = await response.json();
+    await fetch("http://localhost:5000/main", { method: "GET", mode: "cors" })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
+        }
+        return resp.json();
+      })
+      .then((data) => console.log(data.response))
+      .catch((err) => console.log(err));
+
+    // gather id
+    // Fetch with that info
+    // Update fields
+    // Message if unsuccessful
   };
 
-  const postHandler = () => {
+  const postHandler = async () => {
     alert("Post button works!");
+
+    let testBody = { id: 8, item: "test8", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
+
+    await fetch("http://localhost:5000/products", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(testBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
+        }
+        return resp.json();
+      })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+
+    // gather all info
+    // No req sent if item, id are blank.
+    // Post req with that info.
+    // Message if succeeded or failed.
   };
 
-  const updateHandler = () => {
+  const updateHandler = async () => {
     alert("Update button works!");
+
+    let testBody = { id: 8, item: "test8upda", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
+
+    await fetch("http://localhost:5000/products?id=8", {
+      method: "PATCH",
+      mode: "cors",
+      body: JSON.stringify(testBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
+        }
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert(data.response);
+      })
+      .catch((err) => console.log(err));
+
+    // gather all info
+    // Update req with that info.
+    // Message if succeeded or failed.
   };
 
-  const deleteHandler = () => {
-    alert("Delete button works!");
+  const deleteHandler = async () => {
+    await fetch("http://localhost:5000/products?id=8", {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
+        }
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert(data.response);
+      })
+      .catch((err) => console.log(err));
+
+    console.log(id);
+    // gather id
+    // Delete item
+    // Clear all fields
+    // Message if succeeded or failed.
+  };
+
+  const setIdHandler = (e) => setId(e.target.value);
+  const setItemHandler = (e) => setItem(e.target.value);
+  const setCostHandler = (e) => setCost(e.target.value);
+  const setCategoriesHandler = (e) => setCategories(e.target.value);
+  const setImgUrlHandler = (e) => setImgUrl(e.target.value);
+  const setQuantityHandler = (e) => setQuantity(e.target.value);
+  const setDescriptionHandler = (e) => setDescription(e.target.value);
+
+  const getInfo = () => {
+    console.clear();
+    console.log(`ID - ${id}`);
+    console.log(`Item - ${item}`);
+    console.log(`Cost - ${cost}`);
+    console.log(`Categories - ${categories}`);
+    console.log(`ImgUrl - ${imgUrl}`);
+    console.log(`Quantity - ${quantity}`);
+    console.log(`Description - ${description}`);
   };
 
   const lorem =
@@ -38,7 +154,7 @@ export default function EditProducts() {
           <div className="w-full h-52 bg-white "></div>
           <form className="flex flex-col">
             <label className="mt-4 ml-2">Product Description</label>
-            <textarea className="w-full h-60 placeholder:p-2 " placeholder={lorem}></textarea>
+            <textarea onChange={setDescriptionHandler} className="w-full h-60 placeholder:p-2 " placeholder={lorem} value={description} />
           </form>
         </div>
       </div>
@@ -47,17 +163,17 @@ export default function EditProducts() {
       <div className="flex justify-center shadow-md w-2/6 h-4/6 bg-zinc-300 mt-24 ">
         <form className="w-5/6 flex flex-col justify-center">
           <label className="ml-2">Product ID</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="1"></input>
+          <input onChange={setIdHandler} className="w-full h-12 placeholder:pl-4" placeholder="1" value={id} />
           <label className="mt-4 ml-2 ">Item</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="Item"></input>
+          <input onChange={setItemHandler} className="w-full h-12 placeholder:pl-4" placeholder="Item" value={item} />
           <label className="mt-4 ml-2">Cost</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="Cost"></input>
+          <input onChange={setCostHandler} className="w-full h-12 placeholder:pl-4" placeholder="Cost" value={cost} />
           <label className="mt-4 ml-2">Categories</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="categories"></input>
+          <input onChange={setCategoriesHandler} className="w-full h-12 placeholder:pl-4" placeholder="categories" value={categories} />
           <label className="mt-4 ml-2">Image Url</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="imgUrl"></input>
+          <input onChange={setImgUrlHandler} className="w-full h-12 placeholder:pl-4" placeholder="imgUrl" value={imgUrl} />
           <label className="mt-4 ml-2">Quantity</label>
-          <input className="w-full h-12 placeholder:pl-4" placeholder="Quantity"></input>
+          <input onChange={setQuantityHandler} className="w-full h-12 placeholder:pl-4" placeholder="Quantity" value={quantity} />
         </form>
       </div>
 
@@ -73,6 +189,9 @@ export default function EditProducts() {
         </button>
         <button onClick={deleteHandler} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
           Delete
+        </button>
+        <button onClick={getInfo} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
+          Get Info
         </button>
       </div>
     </div>
