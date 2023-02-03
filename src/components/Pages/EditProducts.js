@@ -5,12 +5,12 @@ import { LoggedInContext } from "../../context/LoggedInContext";
 export default function EditProducts() {
   const loggedInCTX = useContext(LoggedInContext);
 
-  const [id, setId] = useState("");
+  const [id, setId] = useState();
   const [item, setItem] = useState("");
-  const [cost, setCost] = useState("");
+  const [cost, setCost] = useState();
   const [categories, setCategories] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState();
   const [description, setDescription] = useState("");
 
   // if (!loggedInCTX.isLoggedIn && !loggedInCTX.isAdmin) return <Navigate to="/store" />;
@@ -129,7 +129,7 @@ export default function EditProducts() {
   const setQuantityHandler = (e) => setQuantity(e.target.value);
   const setDescriptionHandler = (e) => setDescription(e.target.value);
 
-  const getInfo = () => {
+  const getInfoHandler = () => {
     console.clear();
     console.log(`ID - ${id}`);
     console.log(`Item - ${item}`);
@@ -140,8 +140,18 @@ export default function EditProducts() {
     console.log(`Description - ${description}`);
   };
 
+  const clearFormHandler = () => {
+    setId(1);
+    setItem("");
+    setCost(0.0);
+    setCategories("");
+    setImgUrl("");
+    setQuantity(0);
+    setDescription("");
+  };
+
   const lorem =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software.";
 
   return (
     <div className="w-full h-screen bg-stone-400 fixed flex justify-center">
@@ -154,7 +164,7 @@ export default function EditProducts() {
           <div className="w-full h-52 bg-white "></div>
           <form className="flex flex-col">
             <label className="mt-4 ml-2">Product Description</label>
-            <textarea onChange={setDescriptionHandler} className="w-full h-60 placeholder:p-2 " placeholder={lorem} value={description} />
+            <textarea onChange={setDescriptionHandler} className="w-full h-60 p-4 " placeholder={lorem} value={description} />
           </form>
         </div>
       </div>
@@ -163,22 +173,22 @@ export default function EditProducts() {
       <div className="flex justify-center shadow-md w-2/6 h-4/6 bg-zinc-300 mt-24 ">
         <form className="w-5/6 flex flex-col justify-center">
           <label className="ml-2">Product ID</label>
-          <input onChange={setIdHandler} className="w-full h-12 placeholder:pl-4" placeholder="1" value={id} />
+          <input onChange={setIdHandler} type="number" className="w-full h-12 pl-4" placeholder="1" value={id} />
           <label className="mt-4 ml-2 ">Item</label>
-          <input onChange={setItemHandler} className="w-full h-12 placeholder:pl-4" placeholder="Item" value={item} />
+          <input onChange={setItemHandler} type="text" className="w-full h-12 pl-4" placeholder="Item" value={item} />
           <label className="mt-4 ml-2">Cost</label>
-          <input onChange={setCostHandler} className="w-full h-12 placeholder:pl-4" placeholder="Cost" value={cost} />
+          <input onChange={setCostHandler} type="number" className="w-full h-12 pl-4" placeholder="Cost" value={cost} />
           <label className="mt-4 ml-2">Categories</label>
-          <input onChange={setCategoriesHandler} className="w-full h-12 placeholder:pl-4" placeholder="categories" value={categories} />
+          <input onChange={setCategoriesHandler} type="text" className="w-full h-12 pl-4" placeholder="categories" value={categories} />
           <label className="mt-4 ml-2">Image Url</label>
-          <input onChange={setImgUrlHandler} className="w-full h-12 placeholder:pl-4" placeholder="imgUrl" value={imgUrl} />
+          <input onChange={setImgUrlHandler} type="text" className="w-full h-12 pl-4" placeholder="imgUrl" value={imgUrl} />
           <label className="mt-4 ml-2">Quantity</label>
-          <input onChange={setQuantityHandler} className="w-full h-12 placeholder:pl-4" placeholder="Quantity" value={quantity} />
+          <input onChange={setQuantityHandler} type="number" className="w-full h-12 pl-4" placeholder="Quantity" value={quantity} />
         </form>
       </div>
 
-      <div className="flex flex-col justify-center items-center fixed right-16 mt-24 w-36 h-48 bg-zinc-300 ">
-        <button onClick={retrieveHandler} className="w-5/6 h-8 bg-red-400 shadow-md hover:bg-red-800">
+      <div className="flex flex-col justify-center items-center fixed right-16 mt-24 w-36 bg-zinc-300 ">
+        <button onClick={retrieveHandler} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
           Retrieve
         </button>
         <button onClick={postHandler} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
@@ -190,8 +200,11 @@ export default function EditProducts() {
         <button onClick={deleteHandler} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
           Delete
         </button>
-        <button onClick={getInfo} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
+        <button onClick={getInfoHandler} className="w-5/6 h-8 mt-4 bg-red-400 shadow-md hover:bg-red-800">
           Get Info
+        </button>
+        <button onClick={clearFormHandler} className="w-5/6 h-8 mt-4 mb-4 bg-red-400 shadow-md hover:bg-red-800">
+          Clear Board
         </button>
       </div>
     </div>
