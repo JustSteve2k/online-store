@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -16,10 +15,15 @@ code {
 
 /* No w, h, or padding - only look */
 .btnPrimary {
-  @apply text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150
+  @apply text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150;
 }
 
-/* Return home button */ 
+/* Return home button */
 .btnHome {
-  @apply p-2 w-48 text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150
+  @apply p-2 w-48 text-center bg-slate-400 shadow-xl rounded-xl hover:bg-teal-400 transition duration-150;
+}
+
+/* Design test border to locate items */
+.designBorder {
+  @apply border-solid border-4 border-black;
 }
