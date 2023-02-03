@@ -5,12 +5,12 @@ import { LoggedInContext } from "../../context/LoggedInContext";
 export default function EditProducts() {
   const loggedInCTX = useContext(LoggedInContext);
 
-  const [id, setId] = useState();
+  const [id, setId] = useState(1);
   const [item, setItem] = useState("");
-  const [cost, setCost] = useState();
+  const [cost, setCost] = useState(0.0);
   const [categories, setCategories] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [quantity, setQuantity] = useState();
+  const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState("");
 
   // if (!loggedInCTX.isLoggedIn && !loggedInCTX.isAdmin) return <Navigate to="/store" />;
@@ -20,14 +20,29 @@ export default function EditProducts() {
 
     // const response = await fetch("http://localhost:5000/main", { method: "GET", mode: "no-cors" });
     // const data = await response.json();
-    await fetch("http://localhost:5000/main", { method: "GET", mode: "cors" })
+
+    let address = "http://localhost:5000/products?id=" + id;
+    console.log(address);
+
+    // address = address + id;
+    // console.log(address);
+
+    await fetch(address, { method: "GET", mode: "cors" })
       .then((resp) => {
         if (!resp.ok) {
           throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
         }
         return resp.json();
       })
-      .then((data) => console.log(data.response))
+      .then((data) => {
+        console.log(data);
+        setCost(data.cost);
+        setItem(data.item);
+        setCategories(data.categories);
+        setImgUrl(data.imgUrl);
+        setQuantity(data.quantity);
+        setDescription(data.description);
+      })
       .catch((err) => console.log(err));
 
     // gather id
@@ -39,7 +54,9 @@ export default function EditProducts() {
   const postHandler = async () => {
     alert("Post button works!");
 
-    let testBody = { id: 8, item: "test8", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
+    // let testBody = { id: 8, item: "test8", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
+    let testBody = { id: id, item: item, cost: cost, categories: categories, imgUrl: imgUrl, quantity: quantity, description: description };
+    // let testBody = {{ id, item, cost, categories, imgUrl, quantity, description }};  // Object destructuring , doesn't work yet, needs modification.
 
     await fetch("http://localhost:5000/products", {
       method: "POST",
@@ -95,7 +112,10 @@ export default function EditProducts() {
   };
 
   const deleteHandler = async () => {
-    await fetch("http://localhost:5000/products?id=8", {
+    let address = "http://localhost:5000/products?id=" + id;
+    console.log(address);
+
+    await fetch(address, {
       method: "DELETE",
       mode: "cors",
       headers: {
