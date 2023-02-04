@@ -18,18 +18,13 @@ export default function EditProducts() {
   const retrieveHandler = async () => {
     // alert("Retrieve button works!");
 
-    // const response = await fetch("http://localhost:5000/main", { method: "GET", mode: "no-cors" });
-    // const data = await response.json();
-
     let address = "http://localhost:5000/products?id=" + id;
     console.log(address);
-
-    // address = address + id;
-    // console.log(address);
 
     await fetch(address, { method: "GET", mode: "cors" })
       .then((resp) => {
         if (!resp.ok) {
+          clearFormHandler("partial");
           throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
         }
         return resp.json();
@@ -52,9 +47,6 @@ export default function EditProducts() {
   };
 
   const postHandler = async () => {
-    alert("Post button works!");
-
-    // let testBody = { id: 8, item: "test8", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
     let testBody = { id: id, item: item, cost: cost, categories: categories, imgUrl: imgUrl, quantity: quantity, description: description };
     // let testBody = {{ id, item, cost, categories, imgUrl, quantity, description }};  // Object destructuring , doesn't work yet, needs modification.
 
@@ -67,12 +59,16 @@ export default function EditProducts() {
       },
     })
       .then((resp) => {
+        if (resp.status === 302) alert(`that thing is already in the database, try another id besides ${id}`);
         if (!resp.ok) {
           throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
         }
         return resp.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        alert("Posted successfully");
+      })
       .catch((err) => console.log(err));
 
     // gather all info
@@ -82,11 +78,10 @@ export default function EditProducts() {
   };
 
   const updateHandler = async () => {
-    alert("Update button works!");
+    let testBody = { id: id, item: item, cost: cost, categories: categories, imgUrl: imgUrl, quantity: quantity, description: description };
+    let address = "http://localhost:5000/products?id=" + id;
 
-    let testBody = { id: 8, item: "test8upda", cost: 12.99, categories: "top", imgUrl: "www.test.com", quantity: 10, description: "description" };
-
-    await fetch("http://localhost:5000/products?id=8", {
+    await fetch(address, {
       method: "PATCH",
       mode: "cors",
       body: JSON.stringify(testBody),
@@ -129,6 +124,7 @@ export default function EditProducts() {
         return resp.json();
       })
       .then((data) => {
+        clearFormHandler("partial");
         console.log(data);
         alert(data.response);
       })
@@ -160,13 +156,15 @@ export default function EditProducts() {
     console.log(`Description - ${description}`);
   };
 
-  const clearFormHandler = () => {
-    setId(1);
+  const clearFormHandler = (which = "all") => {
+    if (which === "all") {
+      setId(1);
+    }
     setItem("");
-    setCost(0.0);
+    setCost("");
     setCategories("");
     setImgUrl("");
-    setQuantity(0);
+    setQuantity("");
     setDescription("");
   };
 
