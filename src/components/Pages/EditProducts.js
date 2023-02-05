@@ -25,6 +25,7 @@ export default function EditProducts() {
       .then((resp) => {
         if (!resp.ok) {
           clearFormHandler("partial");
+          alert(`ID ${id} not found in the database.`);
           throw Error(`Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`);
         }
         return resp.json();
@@ -182,7 +183,7 @@ export default function EditProducts() {
           <div className="w-full h-52 bg-white "></div>
           <form className="flex flex-col">
             <label className="mt-4 ml-2">Product Description</label>
-            <textarea onChange={setDescriptionHandler} className="w-full h-60 p-4 " placeholder={lorem} value={description} />
+            <textarea onChange={setDescriptionHandler} className="w-full h-60 p-4 resize-none" placeholder={lorem} value={description} />
           </form>
         </div>
       </div>
@@ -191,17 +192,17 @@ export default function EditProducts() {
       <div className="flex justify-center shadow-md w-2/6 h-4/6 bg-zinc-300 mt-24 ">
         <form className="w-5/6 flex flex-col justify-center">
           <label className="ml-2">Product ID</label>
-          <input onChange={setIdHandler} type="number" className="w-full h-12 pl-4" placeholder="1" value={id} />
+          <input onChange={setIdHandler} type="number" className="w-full h-12 pl-4" placeholder="1" value={id} min={0} />
           <label className="mt-4 ml-2 ">Item</label>
           <input onChange={setItemHandler} type="text" className="w-full h-12 pl-4" placeholder="Item" value={item} />
           <label className="mt-4 ml-2">Cost</label>
-          <input onChange={setCostHandler} type="number" className="w-full h-12 pl-4" placeholder="Cost" value={cost} />
+          <input onChange={setCostHandler} type="number" className="w-full h-12 pl-4" placeholder="Cost" value={cost} min={0} />
           <label className="mt-4 ml-2">Categories</label>
           <input onChange={setCategoriesHandler} type="text" className="w-full h-12 pl-4" placeholder="categories" value={categories} />
           <label className="mt-4 ml-2">Image Url</label>
           <input onChange={setImgUrlHandler} type="text" className="w-full h-12 pl-4" placeholder="imgUrl" value={imgUrl} />
           <label className="mt-4 ml-2">Quantity</label>
-          <input onChange={setQuantityHandler} type="number" className="w-full h-12 pl-4" placeholder="Quantity" value={quantity} />
+          <input onChange={setQuantityHandler} type="number" className="w-full h-12 pl-4" placeholder="Quantity" value={quantity} min={0} />
         </form>
       </div>
 
