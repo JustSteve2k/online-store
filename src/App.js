@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import Home from "./components/Home/Home";
 import Store from "./components/Store/Store";
@@ -17,6 +18,8 @@ import MainLayout from "./components/Layouts/MainLayout";
 
 import "./App.css";
 
+const queryClient = new QueryClient();
+
 function App() {
   const [showCart, setShowCart] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -31,26 +34,28 @@ function App() {
 
   return (
     <ComboProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/store"
-            element={<MainLayout showCart={showCart} showLogin={showLogin} showCartHandler={showCartHandler} showLoginHandler={showLoginHandler} />}
-          >
-            <Route index element={<Store />} />
-            <Route path="about" element={<AboutUs />} />
-            <Route path="userprofile" element={<UserProfile />} />
-            <Route path="admin" element={<Admin />} />
-            <Route path="editproducts" element={<EditProducts />} />
-            <Route path="/store/item/:productID" element={<ProductDetails />} />
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/store"
+              element={<MainLayout showCart={showCart} showLogin={showLogin} showCartHandler={showCartHandler} showLoginHandler={showLoginHandler} />}
+            >
+              <Route index element={<Store />} />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="userprofile" element={<UserProfile />} />
+              <Route path="admin" element={<Admin />} />
+              <Route path="editproducts" element={<EditProducts />} />
+              <Route path="/store/item/:productID" element={<ProductDetails />} />
+              <Route path="*" element={<Error />} />
+            </Route>
             <Route path="*" element={<Error />} />
-          </Route>
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </BrowserRouter>
-      {showCart && <Modal showCartHandler={showCartHandler} />}
-      {showLogin && <Login showLoginHandler={showLoginHandler} />}
+          </Routes>
+        </BrowserRouter>
+        {showCart && <Modal showCartHandler={showCartHandler} />}
+        {showLogin && <Login showLoginHandler={showLoginHandler} />}
+      </QueryClientProvider>
     </ComboProvider>
   );
 }
