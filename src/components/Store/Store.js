@@ -1,6 +1,9 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
+
+import { useQuery } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import "../Store/Store.css";
 
@@ -9,8 +12,32 @@ import { useTitleSetter } from "../../Utilities/Utilities";
 import Data, { DUMMY_PRODUCT_LIST } from "../../Data";
 
 export default function Store(props) {
-  const products = [...DUMMY_PRODUCT_LIST];
+  let products = [...DUMMY_PRODUCT_LIST];
+
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
+
+  const getProducts = async () => {
+    let temp = await fetch("http://localhost:5000/products/all", { method: "GET" })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw Error("There was an issue.");
+        }
+        return resp.json();
+      })
+      .then((data) => data.response);
+
+    return temp;
+  };
+
+  const query = useQuery("products", getProducts);
+
+  useTitleSetter(Data.storeTitle);
+
+  if (query.isLoading) return "Loading...";
+  if (query.isError) return "Error fetching items";
+
+  console.log("output");
+  console.log(query.data);
 
   const filterHandler = (button) => {
     let spot = filter.findIndex((element) => element === button);
@@ -34,9 +61,8 @@ export default function Store(props) {
     setFilter(["top", "bottom", "shoes", "accessory"]);
   };
 
-  let reducedList = products.filter((element) =>
-    filter.includes(element.categories)
-  );
+  //let reducedList = products.filter((element) => filter.includes(element.categories));
+  let reducedList = query.data.filter((element) => filter.includes(element.categories));
 
   let storeStatus = (
     <div className="emptyMessage">
@@ -44,15 +70,10 @@ export default function Store(props) {
     </div>
   );
 
-  useTitleSetter(Data.storeTitle);
-
   return (
     <div className="App bg-slate-600">
-      <Filter
-        filterHandler={filterHandler}
-        filter={filter}
-        resetFilterHandler={resetFilterHandler}
-      />
+      <ReactQueryDevtools />
+      <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
       <div className="productsContainer rounded-xl shadow-xl">
         {reducedList.map((element) => (
           <Product key={element.id} element={element} />
