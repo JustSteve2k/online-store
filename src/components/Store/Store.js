@@ -33,11 +33,17 @@ export default function Store(props) {
 
   useTitleSetter(Data.storeTitle);
 
-  if (query.isLoading) return "Loading...";
+  let reducedList = "";
+
+  if (query.isLoading) {
+    reducedList = products.filter((element) => filter.includes(element.categories));
+  }
+
   if (query.isError) return "Error fetching items";
 
-  console.log("output");
-  console.log(query.data);
+  if (query.isFetched) {
+    reducedList = query.data.filter((element) => filter.includes(element.categories));
+  }
 
   const filterHandler = (button) => {
     let spot = filter.findIndex((element) => element === button);
@@ -61,8 +67,8 @@ export default function Store(props) {
     setFilter(["top", "bottom", "shoes", "accessory"]);
   };
 
-  //let reducedList = products.filter((element) => filter.includes(element.categories));
-  let reducedList = query.data.filter((element) => filter.includes(element.categories));
+  // let reducedList = products.filter((element) => filter.includes(element.categories));
+  // let reducedList = query.data.filter((element) => filter.includes(element.categories));
 
   let storeStatus = (
     <div className="emptyMessage">
