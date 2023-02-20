@@ -12,7 +12,8 @@ import { useTitleSetter } from "../../Utilities/Utilities";
 import Data, { DUMMY_PRODUCT_LIST } from "../../Data";
 
 export default function Store(props) {
-  let products = [...DUMMY_PRODUCT_LIST];
+  //let products = [...DUMMY_PRODUCT_LIST]; // Can be used to set products locally.
+  let products = [];
 
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
 
