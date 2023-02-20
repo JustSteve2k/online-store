@@ -29,7 +29,7 @@ export const DUMMY_PRODUCT_LIST = [
   { id: 7, item: "Tie", cost: 9.99, categories: "accessory" },
   { id: 8, item: "Suspenders", cost: 12.99, categories: "accessory" },
   { id: 9, item: "Bowtie", cost: 4.99, categories: "accessory" },
-  { id: 10, item: "Pipe", cost: 11.99, categories: "accesory" },
+  { id: 10, item: "Pipe", cost: 11.99, categories: "accessory" },
   { id: 11, item: "Jorts", cost: 18.99, categories: "bottom" },
   { id: 12, item: "Loafers", cost: 63.99, categories: "shoes" },
   { id: 13, item: "Puffer Jacket", cost: 18.99, categories: "top" },
