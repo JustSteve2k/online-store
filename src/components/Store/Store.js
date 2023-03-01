@@ -17,8 +17,8 @@ export default function Store(props) {
 
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
 
-  const onlineUrl = "http://online-store-backend-production-3353.up.railway.app/products/all";
-  const localURL = "http://localhost:5000/products/all";
+  const onlineUrl = "https://online-store-backend-production-3353.up.railway.app/products/all";
+  // const localURL = "http://localhost:5000/products/all";
 
   const getProducts = async () => {
     let temp = await fetch(onlineUrl, { method: "GET" })
@@ -82,7 +82,7 @@ export default function Store(props) {
 
   return (
     <div className="App bg-slate-600">
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
       <Filter filterHandler={filterHandler} filter={filter} resetFilterHandler={resetFilterHandler} />
       <div className="productsContainer rounded-xl shadow-xl">
         {reducedList.map((element) => (
