@@ -17,7 +17,8 @@ export default function Store(props) {
 
   const [filter, setFilter] = useState(["top", "bottom", "shoes", "accessory"]);
 
-  const onlineUrl = "https://online-store-backend-production-3353.up.railway.app/products/all";
+  const onlineUrl = "https://jealous-puce-vestments.cyclic.app/products/all";
+  // const onlineUrl = "https://online-store-backend-production-3353.up.railway.app/products/all";
   // const localURL = "http://localhost:5000/products/all";
 
   const getProducts = async () => {
